@@ -8,4 +8,8 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+<div class="language-switcher">
+  <?php pll_the_languages() ?>
+  </div>
     

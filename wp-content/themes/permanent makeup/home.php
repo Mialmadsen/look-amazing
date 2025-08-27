@@ -25,7 +25,7 @@
 
 
 
-        <?php get_template_part('template-parts/index', 'testimonials'); ?>
+        
     </div>
 </div>
 <?php get_footer(); ?>

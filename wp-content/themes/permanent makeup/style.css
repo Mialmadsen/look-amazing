@@ -5,6 +5,45 @@ Description: A theme for showcasing permanent makeup services.
 version: 1.0 
 */
 
+
+:root {
+    /* Fonts */
+    --font-heading: 'Trebuchet MS', sans-serif;
+    --font-body: Verdana, sans-serif;
+  
+    /* Text Sizes */
+    --text-body: 16px;
+    --text-h1: 60px;
+    --text-h2: 48px;
+    --text-h3: 32px;
+    --text-h4: 24px;
+  
+    /* Color Styles */
+    --color-dark-grey: #494541;
+    --color-beige: #E1D8C6;
+    --color-light-text: #F7F7F7;
+    --color-dark-text: #0D0C1D;
+  
+    /* Dimentions */
+      --width-full: 100%;
+      --width-12col: 1280px;
+  
+      
+  
+    /* Grid settings  */
+      --grid-gap: 10px;
+      --padding-default:12px;
+  
+  }
+   /* Reset CSS */
+  
+      * {
+      margin:0;
+      padding:0;
+      box-sizing: border-box;
+      
+    }
+
 .testimonial-box {
   border: 1px solid #ddd;
   padding: 20px;
@@ -17,3 +56,4 @@ version: 1.0
   border-radius: 50%;
   margin-bottom: 10px;
 }
+

@@ -1,24 +1,53 @@
 <?php get_header(); ?>
-<div class="container">
-    <div class="content">
+
+
+<!-- Hero image from component -->
+<?php
+// Get the “Posts page” ID (Settings → Reading → Posts page)
+$posts_page_id = (int) get_option('page_for_posts');
+
+// Get ACF fields from that page
+$hero_field = get_field('article_hero', $posts_page_id);        // could be URL or array
+$heading    = get_field('article_heading', $posts_page_id);
+
+// Normalize the image to a URL
+$background_image = is_array($hero_field) ? ($hero_field['url'] ?? '') : (string) $hero_field;
+
+// Render the hero component (WP 5.5+ supports args)
+get_template_part('template-parts/components/hero', null, [
+  'background_image' => $background_image,
+  'heading'          => $heading,
+]);
+?>
+
+<section class="front-page-section">
+
+<div class="cards_layout_page fade-stagger">
+    <!-- <div class="content"> -->
         <?php if(have_posts()): ?>
-            <?php while(have_posts()): the_post() ?>
-                <?php
-                    $url = get_permalink();
-                    $title = get_the_title();
-                    $date = get_the_date();       // Get the date the post was written
-                    $author = get_the_author();   // Get the name of the user who wrote the post
-                    $excerpt = get_the_excerpt(); // Get the first 55 words of the blog entry
-                ?>
-                
-                <!-- HTML to print one blog entry preview -->
-                <div class="blog-preview">
-                    <h2><a href="<?php echo $url; ?>"><?php echo $title; ?></a></h2>
-                    <p><small>Written by <?php echo $author; ?> on <?php echo $date; ?></small></p>
-                    <p><?php echo $excerpt; ?></p>
-                </div>
-                
-            <?php endwhile; ?>
+            <?php
+                    while (have_posts()) : the_post();
+                        // $image      = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                        $heading    = get_the_title();
+                        $text       = get_the_excerpt();
+                        $link       = get_permalink();
+                        $date       = get_the_date();
+                        $author     = get_the_author();
+                        $categories = get_the_category();
+                        $tags       = get_the_tags();
+
+                        get_template_part('template-parts/components/card', null, [
+                            // 'image'      => $image,
+                            'heading'    => $heading,
+                            'text'       => $text,
+                            'link'       => $link,
+                            'date'       => $date,
+                            'author'     => $author,
+                            'categories' => $categories,
+                            'tags'       => $tags,
+                        ]);
+                    endwhile;
+                    ?>
         <?php endif; ?>
 
 
@@ -26,7 +55,9 @@
 
 
         
-    </div>
+    <!-- </div> -->
 </div>
+</section>
+
 <?php get_footer(); ?>
 

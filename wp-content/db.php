@@ -1,1 +1,0 @@
-/Users/miamadsen/Local Sites/permanent-makeup/app/public/wp-content/plugins/query-monitor/wp-content/db.php

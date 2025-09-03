@@ -45,7 +45,7 @@
       endwhile;
       wp_reset_postdata();
     else :
-      echo '<p>Ingen testimonials fundet.</p>';
+      echo '<p>Ingen testimonials fundet.</p>';_
     endif;
     ?>
   </div>

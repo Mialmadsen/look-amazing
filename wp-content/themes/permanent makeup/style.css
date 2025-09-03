@@ -291,6 +291,15 @@ position: relative;}
       font-size: var(--text-body);
       color: var(--color-dark-text);
     }
+
+
+    /*single.php style*/
+    .blog-post{ /* alt content*/
+      max-width: var(--width-12col);
+      margin: 0 auto;
+      padding: var(--padding-default);
+    }
+    
     
     /* Responsivt: pak testimonials på række ned under hinanden */
     @media (max-width: 960px) {

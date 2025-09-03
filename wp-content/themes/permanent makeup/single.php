@@ -10,6 +10,8 @@
             $tags = get_the_tags();       // Get the tags associated with the post
         ?>
 
+        <?php get_template_part('template-parts/components/hero') ?>
+        
         <!-- HTML to print one blog entry preview -->
         <div class="blog-post">
             <h2><?php echo $title; ?></h2>

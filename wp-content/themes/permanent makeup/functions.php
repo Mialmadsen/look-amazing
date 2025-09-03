@@ -20,3 +20,35 @@ function permanent_makeup_register_menus() {
 }
 add_action('after_setup_theme', 'permanent_makeup_register_menus');
 
+// Enqueue GSAP and animation scripts
+function permanent_makeup_enqueue_scripts() {
+    wp_enqueue_script(
+        'gsap',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
+        [],
+        null,
+        true
+    );
+
+    wp_enqueue_script(
+        'gsap-scrolltrigger',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js',
+        ['gsap'],
+        null,
+        true
+    );
+
+   
+
+    wp_enqueue_script(
+        'tidslerne-scroll-animations',
+        get_template_directory_uri() . '/JS/scroll-animations.js',
+        ['gsap', 'gsap-scrolltrigger'],
+        null,
+        true
+    );
+
+   
+}
+add_action('wp_enqueue_scripts', 'permanent_makeup_enqueue_scripts');
+

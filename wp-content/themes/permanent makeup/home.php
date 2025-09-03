@@ -23,8 +23,7 @@ get_template_part('template-parts/components/hero', null, [
 <section class="front-page-section">
 
 <div class="cards_layout_page fade-stagger">
-    <!-- <div class="content"> -->
-        <?php if(have_posts()): ?>
+           <?php if(have_posts()): ?>
             <?php
                     while (have_posts()) : the_post();
                         // $image      = get_the_post_thumbnail_url(get_the_ID(), 'medium');
@@ -55,7 +54,7 @@ get_template_part('template-parts/components/hero', null, [
 
 
         
-    <!-- </div> -->
+  
 </div>
 </section>
 

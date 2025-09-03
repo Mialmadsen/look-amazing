@@ -38,6 +38,12 @@ $tags       = $args['tags']       ?? [];
             <?php endif; ?>
         </div>
 
+        
+
+        <?php if (!empty($text)) : ?>
+        <p class="card-excerpt"><?php echo wp_trim_words(wp_kses_post($text), 10, '...'); ?></p>
+        <?php endif; ?>
+
         <?php if (!empty($categories)) : ?>
         <div class="card-categories">
             <?php foreach ($categories as $category) : ?>
@@ -49,13 +55,9 @@ $tags       = $args['tags']       ?? [];
         <?php if (!empty($tags)) : ?>
         <div class="card-tags">
             <?php foreach ($tags as $tag) : ?>
-                <span class="card-tag">#<?php echo esc_html($tag->name); ?></span>
+                <span class="card-tag"><?php echo esc_html($tag->name); ?></span>
             <?php endforeach; ?>
         </div>
-        <?php endif; ?>
-
-        <?php if (!empty($text)) : ?>
-        <p class="card-excerpt"><?php echo wp_trim_words(wp_kses_post($text), 10, '...'); ?></p>
         <?php endif; ?>
     </div>
 </a>

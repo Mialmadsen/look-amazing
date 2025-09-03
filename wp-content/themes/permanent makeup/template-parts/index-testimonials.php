@@ -1,4 +1,4 @@
-<section class="testimonial-section">
+<section class="testimonial-section front-page-section">
   <div class="testimonial-wrapper">
     <?php
     $args = array(

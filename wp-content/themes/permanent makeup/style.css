@@ -334,6 +334,111 @@ position: relative;}
       font-size: var(--text-body);
       color: var(--color-dark-text);
     }
+
+
+    /*single.php style*/
+    /* Blog Post Wrapper */
+.blog-wrapper {
+  width: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* Single Blog Post */
+.blog-post {
+  max-width: var(--width-12col);
+  margin: 0 auto;
+  padding: var(--padding-default);
+  background-color: #E1D8C6;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+}
+
+/* Post Header */
+.post-header {
+  margin-bottom: 1.5rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+
+.post-meta { /*Written by admin + date*/
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.post-meta .post-author,
+.post-meta .post-date {
+  font-weight: 500;
+}
+
+/* Post Content */
+.post-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  margin-top: 1.5rem;
+}
+
+/* Taxonomies Section */
+.post-taxonomies {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.post-categories,
+.post-tags {
+  margin-bottom: 0.75rem;
+}
+
+.post-categories strong,
+.post-tags strong {
+  margin-right: 0.5rem;
+  color: #111;
+}
+
+/* Category and Tag Links */
+.category-link,
+.tag-link {
+  display: inline-block;
+  background-color: #f4f4f4;
+  color: #444;
+  padding: 4px 10px;
+  margin: 0 6px 6px 0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.category-link:hover,
+.tag-link:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+/* Comments Section */
+.post-comments {
+  margin-top: 3rem;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .post-title {
+    font-size: 1.5rem;
+  }
+
+  .blog-post {
+    padding: 1.5rem;
+  }
+}
+
+
     
 /* Survey */
 .survey {

@@ -44,9 +44,9 @@
         <?php
       endwhile;
       wp_reset_postdata();
-    else :
-      echo '<p>Ingen testimonials fundet.</p>';
-    endif;
+      else :
+        echo '<p>Ingen testimonials fundet.</p>';
+      endif;
     ?>
   </div>
 </section>

@@ -26,7 +26,7 @@ get_template_part('template-parts/components/hero', null, [
            <?php if(have_posts()): ?>
             <?php
                     while (have_posts()) : the_post();
-                        // $image      = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                        $image      = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
                         $heading    = get_the_title();
                         $text       = get_the_excerpt();
                         $link       = get_permalink();
@@ -36,7 +36,7 @@ get_template_part('template-parts/components/hero', null, [
                         $tags       = get_the_tags();
 
                         get_template_part('template-parts/components/card', null, [
-                            // 'image'      => $image,
+                            'image'      => $image,
                             'heading'    => $heading,
                             'text'       => $text,
                             'link'       => $link,
@@ -56,7 +56,11 @@ get_template_part('template-parts/components/hero', null, [
         
   
 </div>
-</section>
 
+
+
+</section>
+<?php get_template_part("template-parts/index", "survey") ?>
+<div class="space"></div>
 <?php get_footer(); ?>
 

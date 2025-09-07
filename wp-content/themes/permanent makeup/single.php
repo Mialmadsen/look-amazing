@@ -3,15 +3,18 @@
     <?php if(have_posts()): ?>
         <?php while(have_posts()): the_post() ?>
             <?php
+                
                 $title = get_the_title();
                 $date = get_the_date();       // Get the date the post was written
                 $author = get_the_author();   // Get the name of the user who wrote the post
                 $content = get_the_content(); // Get the full blog content
                 $categories = get_the_category();
                 $tags = get_the_tags();       // Get the tags associated with the post
+                
             ?>
 
             <!-- Blog Post -->
+             
             <div class="blog-post">
                 <div class="post-header">
                     <h2 class="post-title"><?php echo $title; ?></h2>

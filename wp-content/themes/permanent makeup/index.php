@@ -24,13 +24,13 @@ get_template_part('template-parts/components/hero', null, [
 ]);
 ?>
 
- <?php get_template_part('template-parts/index', 'testimonials'); ?>
- 
+
 
 
 <?php get_template_part("template-parts/index", "post") ?>
 <?php get_template_part("template-parts/index", "survey") ?>
-
+ <?php get_template_part('template-parts/index', 'testimonials'); ?>
+ 
 
 
 

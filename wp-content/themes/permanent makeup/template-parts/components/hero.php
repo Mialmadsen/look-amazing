@@ -18,6 +18,10 @@ $h3  = $args['frontpage_subheading'] ?? '';
     <?php if ($h3) : ?>
           <h3><?php echo esc_html($h3); ?></h3>
     <?php endif; ?>
+
+    <a href="">
+      <button class="hero_btn">Book tid<span class="arrow">→</span></button>
+    </a>
   </div>
     
 

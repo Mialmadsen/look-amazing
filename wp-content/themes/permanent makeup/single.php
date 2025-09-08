@@ -9,6 +9,7 @@
                 $author = get_the_author();   // Get the name of the user who wrote the post
                 $content = get_the_content(); // Get the full blog content
                 $categories = get_the_category();
+                $image = get_the_post_thumbnail_url(); // Get the featured image of the post
                 $tags = get_the_tags();       // Get the tags associated with the post
                 
             ?>
@@ -25,6 +26,7 @@
                 </div>
 
                 <div class="post-content">
+                    <img src="<?php echo esc_url($image); ?>" alt="" />
                     <?php echo $content; ?>
                 </div>
 

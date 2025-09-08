@@ -1,4 +1,11 @@
 <?php get_header(); ?>
+<?php // Render the hero component 
+$image = get_the_post_thumbnail_url(); // Get the featured image of the post
+get_template_part('template-parts/components/hero', null, [
+  'background_image' => $image,
+  
+]);
+?>
 <div class="blog-wrapper">
     <?php if(have_posts()): ?>
         <?php while(have_posts()): the_post() ?>
@@ -9,12 +16,14 @@
                 $author = get_the_author();   // Get the name of the user who wrote the post
                 $content = get_the_content(); // Get the full blog content
                 $categories = get_the_category();
-                $image = get_the_post_thumbnail_url(); // Get the featured image of the post
+                
                 $tags = get_the_tags();       // Get the tags associated with the post
                 
-            ?>
+?>
+            
 
             <!-- Blog Post -->
+
              
             <div class="blog-post">
                 <div class="post-header">
@@ -24,11 +33,12 @@
                         on <span class="post-date"><?php echo $date; ?></span></small>
                     </p>
                 </div>
-
-                <div class="post-content">
-                    <img src="<?php echo esc_url($image); ?>" alt="" />
+                 <div class="post-content">
+                    
                     <?php echo $content; ?>
                 </div>
+
+               
 
                 <div class="post-taxonomies">
                     <?php if($categories): ?>

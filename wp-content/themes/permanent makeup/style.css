@@ -648,7 +648,62 @@ position: relative;}
   font-size: 1.2em;
   line-height: 1;
 }
+/* Gallery */
 
+.gallery-grid {
+  background-color: var(--color-light-bg);
+  
+  max-width: var(--width-12col);
+  margin: 0 auto;
+
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid-gap);
+  justify-content: space-between;
+}
+
+.gallery-item {
+  flex: 0 0 calc(33.333% - var(--grid-gap) * 2);
+  margin-bottom: var(--grid-gap);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+} 
+
+.mat{
+  width:100%;
+  height: 60px;
+  background: var(--color-dark-grey);
+}
+
+.gallery-grid_page  {
+  background-color: var(--color-light-bg);
+  padding: var(--padding-default);
+  max-width: var(--width-12col);
+  margin: 0 auto;
+ 
+
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-content: space-between;
+  
+}
+
+/* .gallery-item {
+  flex: 0 0 calc(33.333% - var(--grid-gap) * 2);
+  margin-bottom: var(--grid-gap);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+} */
     
     /* Responsivt: pak testimonials på række ned under hinanden */
   @media (max-width: 960px) {

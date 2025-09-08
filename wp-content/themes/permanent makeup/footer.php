@@ -57,6 +57,19 @@
 
   </div>
 
+    <!-- Sociale Medier Ikoner -->
+  <div class="footer-socials">
+    <a href="<?php the_field('facebook_url', "option"); ?>" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="<?php the_field('instagram_url', "option"); ?>" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+  </div>
+
+
   <!-- Copyrights -->
   <div class="footer-bottom">
     <?php 

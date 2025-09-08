@@ -584,7 +584,7 @@ position: relative;}
   justify-content: space-between;
   max-width: var(--width-12col);
   margin: auto;
-  flex-wrap: wrap;
+  flex-wrap: 1;
   gap: var(--grid-gap);
 }
 
@@ -612,6 +612,7 @@ position: relative;}
 }
 .survey-cta{
   display: flex;
+  
   align-items: center;
   gap: 1rem;
   
@@ -622,10 +623,10 @@ position: relative;}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px; /* space between text and arrow */
+  gap:4px; /* space between text and arrow */
   
   font-family: var(--font-body);
-  font-size: var(--text-h4);
+  font-size: 18px;
   color: var(--color-light-text);
 
   padding: 10px 20px;

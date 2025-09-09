@@ -27,7 +27,7 @@
       <?php endif; ?>
 
       <?php if ( $adress ) : ?>
-        <p><strong>Adresse:</strong><br>
+        <p><strong><?php pll_e("Adresse:") ?></strong><br>
           <?php echo nl2br( esc_html($adress) ); ?>
         </p>
       <?php endif; ?>
@@ -49,7 +49,7 @@
       $opening_hours = get_field("opening_hours", "option");
       ?>
       <?php if ( $opening_hours ) : ?>
-        <p><strong>Åbningstider:</strong><br>
+        <p><strong><?php pll_e("Åbningstider:") ?></strong><br>
           <?php echo nl2br( esc_html($opening_hours) ); ?>
         </p>
       <?php endif; ?>

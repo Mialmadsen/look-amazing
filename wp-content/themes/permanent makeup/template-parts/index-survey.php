@@ -7,15 +7,15 @@
             <<i class="fa-solid fa-paperclip" style="color: #E1D8C6;"></i>
         </div>
             <div class="text">
-                <h2>Vil du hjælpe os?</h2>
-                <p>Vi vil gerne blive klogere på vores kunder, derfor er vi igang med at udføre en spørgeundersøgelse.</p>
+                <h2><?php pll_e("Vil du hjælpe os?") ?></h2>
+                <p><?php pll_e("Vi vil gerne blive klogere på vores kunder, derfor er vi igang med at udføre en spørgeundersøgelse.") ?></p>
             </div>
             
            
         </div>
         
-        <a href="#" class="button-container">
-                Spørgeskema <span class="arrow">→</span>
+    <a href="#" class="button-container">
+        <?php pll_e('Spørgeskema'); ?> <span class="arrow">→</span>
         </a>
         
     </div>

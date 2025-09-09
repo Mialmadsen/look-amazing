@@ -27,7 +27,7 @@
   ?>
 
   <a class="section_heading" href="<?php echo esc_url($gallery_page_url); ?>">
-    <h2>Galleri</h2>
+    <h2><?php pll_e("Galleri") ?></h2>
     
   </a>
 

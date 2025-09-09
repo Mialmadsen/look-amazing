@@ -16,3 +16,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.gsap) {
+    const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.8 } });
+
+    tl.from(".hero-title",    { y: 30, opacity: 0 })
+      .from(".hero-subtitle", { y: 30, opacity: 0 }, "-=0.4")
+      .from(".hero-cta",      { y: 20, opacity: 0 }, "-=0.4");
+  } else {
+    console.warn("GSAP not found");
+  }
+});

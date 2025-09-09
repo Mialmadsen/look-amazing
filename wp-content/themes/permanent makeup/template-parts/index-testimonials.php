@@ -1,8 +1,8 @@
 <section class="front-page-section" id="blog-stories">
   <a class="section_heading" href="<?php echo esc_url( get_permalink( get_option('page_for_posts') ) ); ?>">
-    <h2>Anmeldelser</h2>
+    <h2><?php pll_e("Anmeldelser") ?></h2>
   </a>
-  <div class="testimonial-wrapper">
+  <div class="testimonial-wrapper fade-stagger">
     <?php
     $args = array(
       'post_type'      => 'testimonial',
@@ -20,7 +20,7 @@
         $date  = get_the_date();
         ?>
         
-        <article class="testimonial-card">
+        <div class="testimonial-card card">
           <div class="testimonial-header">
             <?php if (!empty($image)) : ?>
               <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($name); ?>" class="testimonial-image" />
@@ -42,7 +42,7 @@
           <?php if (!empty($date)) : ?>
             <p class="testimonial-date"><?php echo esc_html($date); ?></p>
           <?php endif; ?>
-        </article>
+          </div>
 
         <?php
       endwhile;

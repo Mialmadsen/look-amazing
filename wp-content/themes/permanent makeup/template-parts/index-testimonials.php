@@ -1,6 +1,6 @@
 <section class="front-page-section" id="blog-stories">
   <a class="section_heading" href="<?php echo esc_url( get_permalink( get_option('page_for_posts') ) ); ?>">
-    <h2>Anmeldelser</h2>
+    <h2>Anmeldelser <i class="fa-solid fa-thumbs-up"></i></h2> 
   </a>
   <div class="testimonial-wrapper">
     <?php

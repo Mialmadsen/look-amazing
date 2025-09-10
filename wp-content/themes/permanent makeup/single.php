@@ -75,4 +75,5 @@ get_template_part('template-parts/components/hero', null, [
         <?php endwhile; ?>
     <?php endif; ?>
 </div>
+<?php get_template_part('template-parts/components/read-more'); ?>
 <?php get_footer(); ?>

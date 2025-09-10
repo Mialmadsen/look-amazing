@@ -347,7 +347,7 @@ position: relative;}
   position:relative;
   display:grid;
   grid-template-columns: 1fr 1fr;   /* 50/50 */
-  grid-template-rows: 40% 25% 25%;
+  grid-template-rows: auto auto auto;
   gap:20px;
   max-width: var(--width-12col);
   margin:0 auto;
@@ -369,7 +369,7 @@ position: relative;}
 .story-card-img > img:first-child {
   display: block;
   width: 100%;
-  height: auto;                    /* remove the previous 80% cap */
+  height: auto;                   
 }
 
 /* Overlay (second) image – sits on top of the featured image */
@@ -775,6 +775,7 @@ position: relative;}
   align-items: center;
   justify-content: center;
   gap:4px; /* space between text and arrow */
+  white-space: nowrap;
   
   font-family: var(--font-body);
   font-size: 18px;

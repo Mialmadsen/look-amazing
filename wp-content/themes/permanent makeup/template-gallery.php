@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+
+
+
+
+<?php 
+/**
+ * Template Name: Gallery Template
+ * Template Post Type: page
+ */
+get_header(); ?>
+
 <div class='mat'></div>
 
 <?php if(have_posts()): ?>

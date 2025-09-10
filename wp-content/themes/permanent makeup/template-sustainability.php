@@ -1,6 +1,13 @@
-<?php get_header(); ?>
-
 <?php
+/**
+ * Template Name: Sustainability Template
+ * Template Post Type: page
+ */
+
+
+get_header();
+
+
 // Locate the page by slug and map to current language
 $base   = get_page_by_path('sustainability-initiatives'); // <- your slug
 $page_id = function_exists('pll_get_post') ? pll_get_post($base->ID) : $base->ID;

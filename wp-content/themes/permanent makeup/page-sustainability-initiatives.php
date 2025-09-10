@@ -13,6 +13,8 @@ $title_1= get_field('world_goals_header', $page_id);
 $text_1= get_field('world_goals_text', $page_id);
 $title_2= get_field('our_initiatives_header', $page_id);
 $text_2= get_field('our_initiatives_text', $page_id);
+$video= get_field('video_link', $page_id);
+
 
 // Normalize image to URL
 $background_image = is_array($hero_field) ? ($hero_field['url'] ?? '') : (string) $hero_field;
@@ -59,8 +61,9 @@ get_template_part('template-parts/components/hero', null, [
 ]); ?>
 </section>
 
-
-
+<div class="video-container">
+  <iframe width="560" height="315" src="<?php echo esc_url($video) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 

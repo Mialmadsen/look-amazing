@@ -800,6 +800,27 @@ position: relative;}
   font-size: 1.2em;
   line-height: 1;
 }
+.animate-earth {
+  font-size: 3rem; /* adjust size */
+  background: linear-gradient(180deg, #E1D8C6 50%, #1e8449 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 100% 200%;
+  background-position: 0 0;
+  animation: fillLoop 4s ease-in-out infinite;
+}
+
+@keyframes fillLoop {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
 /* Gallery */
 
 .gallery-grid {

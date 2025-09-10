@@ -49,5 +49,19 @@ get_template_part('template-parts/components/hero', null, [
   </div>
 </section>
 
+<section class="front-page-section">
+  <?php get_template_part('template-parts/blog-story', null, [
+  'query_args' => [
+    'p' => 223,   // your post ID
+    'post_type' => 'post',
+    'suppress_filters' => false,
+  ]
+]); ?>
+</section>
+
+
+
+
+
 
 <?php get_footer(); ?>

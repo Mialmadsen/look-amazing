@@ -65,6 +65,9 @@ function pm_register_strings() {
     pll_register_string("PM", "Book tid");
     pll_register_string("PM", "Åbningstider:");
     pll_register_string("PM", "Adresse:");
+     pll_register_string("PM", "Har du lyst til at lære mere?");
+    pll_register_string("PM", "Læs om FN 17 verdensmål, og bliv klogere på hvordan vi alle kan være med til at gøre en forskel.");
+    
 
 
 

@@ -13,8 +13,14 @@
            
         </div>
         
-        <a href="#" class="button-container"><?php pll_e("Læs mere") ?><span class="arrow">→</span>
-        </a>
+        <a href="<?php 
+  $page = get_page_by_path('sustainability-initiatives'); 
+  if ($page) {
+    echo esc_url( get_permalink( function_exists('pll_get_post') ? pll_get_post($page->ID) : $page->ID ) ); 
+  } 
+?>" class="button-container">
+  <?php pll_e('Læs mere'); ?><span class="arrow">→</span>
+</a>
         
     </div>
 </section>

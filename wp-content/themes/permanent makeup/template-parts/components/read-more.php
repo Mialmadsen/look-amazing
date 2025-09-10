@@ -3,7 +3,7 @@
     <a class="section_heading" href="<?php echo esc_url( get_permalink( get_option('page_for_posts') ) ); ?>">
       <h2><?php pll_e("Behandlingen, der matcher dine behov")?></h2>
     </a>
-    <div class="cards_layout_page fade-stagger"> <?php
+    <div class="cards_layout_page"> <?php
     $q = new WP_Query([
       'post_type'           => 'post',
       'posts_per_page'      => 3,

@@ -584,7 +584,7 @@ position: relative;}
       height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--color-dark-text);
+      /* border: 2px solid var(--color-dark-text); */
       flex-shrink: 0;
     }
     

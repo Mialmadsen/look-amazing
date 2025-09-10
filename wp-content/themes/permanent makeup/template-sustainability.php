@@ -1,6 +1,13 @@
-<?php get_header(); ?>
-
 <?php
+/**
+ * Template Name: Sustainability Template
+ * Template Post Type: page
+ */
+
+
+get_header();
+
+
 // Locate the page by slug and map to current language
 $base   = get_page_by_path('sustainability-initiatives'); // <- your slug
 $page_id = function_exists('pll_get_post') ? pll_get_post($base->ID) : $base->ID;
@@ -64,6 +71,7 @@ get_template_part('template-parts/components/hero', null, [
 <div class="video-container">
   <iframe width="560" height="315" src="<?php echo esc_url($video) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
 
 
 

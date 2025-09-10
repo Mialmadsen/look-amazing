@@ -9,6 +9,10 @@ $page_id = function_exists('pll_get_post') ? pll_get_post($base->ID) : $base->ID
 $hero_field = get_field('sustainable_hero_image', $page_id); // array or url
 $h1         = get_field('sustainable_hero_header', $page_id);
 $h3         = get_field('sustainable_hero_small_tekst', $page_id);
+$title_1= get_field('world_goals_header', $page_id);
+$text_1= get_field('world_goals_text', $page_id);
+$title_2= get_field('our_initiatives_header', $page_id);
+$text_2= get_field('our_initiatives_text', $page_id);
 
 // Normalize image to URL
 $background_image = is_array($hero_field) ? ($hero_field['url'] ?? '') : (string) $hero_field;
@@ -18,9 +22,32 @@ get_template_part('template-parts/components/hero', null, [
   'background_image'      => $background_image,
   'frontpage_heading'     => $h1,
   'frontpage_subheading'  => $h3,
+
 ]);
 ?>
 
-<?php get_template_part("template-parts/index", "flyer") ?>
+<section class="front-page-section sustainability">
+  <div class="sust-container">
+    <h2><?php echo esc_html($title_1); ?></h2>
+    <div class="prose">
+      <?php echo wpautop( wp_kses_post($text_1) ); ?>
+    </div>
+
+    
+
+    
+</section>
+<?php get_template_part('template-parts/index', 'flyer'); ?>
+
+<section class="front-page-section sustainability">
+  
+    
+<h2><?php echo esc_html($title_2); ?></h2>
+    <div class="prose">
+      <?php echo wpautop( wp_kses_post($text_2) ); ?>
+    </div>
+  </div>
+</section>
+
 
 <?php get_footer(); ?>

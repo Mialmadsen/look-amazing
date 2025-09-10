@@ -494,6 +494,34 @@ position: relative;}
   padding: calc(var(--padding-default) * 0.8);
 }
 
+* Container + spacing */
+.sustainability .sust-container{
+  max-width: var(--width-12col);
+  margin: 0 auto;
+  padding: 24px var(--padding-default) 48px;
+}
+
+/* Headings like Figma */
+.sustainability h2{
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  color: var(--color-dark-text);
+  margin: 28px 0 12px;
+}
+
+/* Paragraph rhythm */
+.sustainability .prose p{
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-dark-text);
+  margin: 0 0 14px;
+}
+
+/* Optional: strong lines inside prose stand out a bit more */
+.sustainability .prose p strong{
+  font-weight: 700;
+}
 
 
 

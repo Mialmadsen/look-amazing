@@ -9,6 +9,7 @@ $hero_field = get_field('frontpage_image', );        // could be URL or array
 $heading    = get_field('', $page_id);
 $h1    = get_field('frontpage_heading', $page_id);
 $h3    = get_field('frontpage_subheading', $page_id);
+$video= get_field('frontpage_video', $page_id);
 
 
 // Normalize the image to a URL
@@ -31,6 +32,13 @@ get_template_part('template-parts/components/hero', null, [
 <?php get_template_part("template-parts/index", "survey") ?>
 <?php get_template_part('template-parts/index', 'testimonials'); ?>
 <?php get_template_part('template-parts/index', 'galleri-2'); ?>
+
+
+<div class="video-container">
+  <iframe width="560" height="315" src="<?php echo esc_url($video) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
  
 
 

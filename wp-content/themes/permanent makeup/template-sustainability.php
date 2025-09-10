@@ -66,6 +66,9 @@ get_template_part('template-parts/components/hero', null, [
     'suppress_filters' => false,
   ]
 ]); ?>
+
+
+
 </section>
 
 <div class="video-container">

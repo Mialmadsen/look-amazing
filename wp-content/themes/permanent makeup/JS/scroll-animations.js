@@ -28,3 +28,25 @@ document.addEventListener("DOMContentLoaded", function () {
     console.warn("GSAP not found");
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const btn  = document.querySelector('.pm-nav__toggle');
+  const menu = document.getElementById('pm-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    menu.classList.toggle('open');
+  });
+
+  // optional: close menu when clicking a link (mobile UX)
+  menu.addEventListener('click', e => {
+    if (e.target.matches('a')) {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+    }
+  });
+});
+
+
+

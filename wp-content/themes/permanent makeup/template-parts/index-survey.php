@@ -4,7 +4,7 @@
         <div class="survey-cta"> 
             <div class="clip-icon">
             <!-- SVG-ikon for kuvert -->
-            <<i class="fa-solid fa-paperclip" style="color: #E1D8C6;"></i>
+            <i class="fa-solid fa-paperclip" style="color: #E1D8C6;"></i>
         </div>
             <div class="text">
                 <h2><?php pll_e("Vil du hjælpe os?") ?></h2>

@@ -1,0 +1,213 @@
+ /*========== Survey form  ========== */
+
+/* =========================================================================
+   FORM (template-form.php)
+   Uses project tokens from style.css:
+   --font-heading, --font-body, --text-*, --color-*, --width-12col, etc.
+   Scope: only affects .front-page-section.form-section
+   ====================================================================== */
+
+/* Container inherits spacing from .front-page-section */
+.front-page-section.form-section {
+  color: var(--color-dark-grey);
+  font-family: var(--font-body);
+}
+
+/* Heading + intro text */
+.front-page-section.form-section h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  color: var(--color-dark-grey);
+  margin: 0 0 8px;
+}
+
+.front-page-section.form-section .form-text p{
+  font-size: var(--text-body);
+  line-height: 1.55;
+  margin: 0 0 40px;
+  max-width: 70ch;
+}
+
+/* Form element */
+.front-page-section.form-section .survey-form {
+  width: 100%;
+}
+
+/* ───────────────────────── Top grid (Fornavn/Efternavn/Alder/Køn/By) */
+.front-page-section.form-section .survey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(0,0,0,.18);
+  margin-bottom: 28px;
+}
+
+
+
+.front-page-section.form-section .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.front-page-section.form-section .field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-dark-grey);
+}
+
+/* Inputs/selects/textarea — SHARP corners, white, dark-grey border */
+.front-page-section.form-section input[type="text"],
+.front-page-section.form-section input[type="number"],
+.front-page-section.form-section select,
+.front-page-section.form-section textarea,
+.front-page-section.form-section .form-select {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  height: 48px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--color-dark-grey);
+  border-radius: 0;                 /* sharp corners */
+  outline: none;
+  width: 100%;
+  transition: border-color .15s ease;
+}
+
+.front-page-section.form-section textarea {
+  height: auto;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.front-page-section.form-section input::placeholder,
+.front-page-section.form-section textarea::placeholder {
+  color: var(--color-dark-grey);
+  opacity: .7;
+}
+
+/* minimal focus (no glow) */
+.front-page-section.form-section input:focus,
+.front-page-section.form-section select:focus,
+.front-page-section.form-section textarea:focus {
+  border-color: var(--color-dark-text);
+}
+
+/* ───────────────────────── Likert matrix (no wrapper box) */
+.front-page-section.form-section .likert {
+  margin: 24px 0 36px;
+  padding: 0;                 /* no padding / no border box */
+  border: 0;
+  overflow-x: auto;           /* mobile safety */
+}
+
+.front-page-section.form-section .likert-row {
+  display: grid;
+  grid-template-columns: 1.8fr repeat(5, minmax(52px, 1fr));
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  min-width: 620px;           /* enable sideways scroll on very small screens */
+}
+
+.front-page-section.form-section .likert-head {
+  color: var(--color-dark-grey);
+  opacity: .85;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.front-page-section.form-section .likert-q {
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.front-page-section.form-section .likert-col {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Square “checkbox-look” radios — transparent fill + dark-grey border */
+.front-page-section.form-section .likert input[type="radio"],
+.front-page-section.form-section .likert input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--color-dark-grey);
+  background: transparent;
+  border-radius: 0;           /* perfect square */
+  position: relative;
+  cursor: pointer;
+  transition: border-color .15s ease;
+}
+
+.front-page-section.form-section .likert input[type="radio"]:hover,
+.front-page-section.form-section .likert input[type="checkbox"]:hover {
+  border-color: var(--color-dark-text);
+}
+
+.front-page-section.form-section .likert input[type="radio"]:checked::after,
+.front-page-section.form-section .likert input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-dark-grey);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ───────────────────────── Comment field + terms */
+.front-page-section.form-section .field.long {
+  margin: 28px 0 10px;
+}
+
+.front-page-section.form-section .field.terms {
+  margin: 18px 0 10px;
+}
+.front-page-section.form-section .field.terms label {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 500;
+}
+
+/* ───────────────────────── Submit button — dark grey, sharp */
+.front-page-section.form-section #submit {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-light-text);
+  background: var(--color-dark-grey);      /* dark grey button */
+  border: 1px solid var(--color-dark-grey);
+  border-radius: 0;                         /* sharp corners */
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: filter .2s ease;
+  margin-top: 8px;
+}
+
+.front-page-section.form-section #submit:hover {
+  color: var(--color-dark-grey);
+  background: var(--color-light-text);
+}
+
+/* ───────────────────────── Utilities */
+.front-page-section.form-section .sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+@media (max-width: 1024px) {
+  .front-page-section.form-section .survey-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .front-page-section.form-section .survey-grid { grid-template-columns: 1fr; }}

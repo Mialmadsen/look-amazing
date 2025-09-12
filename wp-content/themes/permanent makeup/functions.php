@@ -25,8 +25,21 @@ function permanent_makeup_enqueue_styles() {
         [],
         '6.5.0'
     );
+    // 🔹 Form styles – only on the form template
+    if ( is_page_template('template-form.php') ) { // adjust if in subfolder
+        $rel  = '/css/form.css';
+        $path = get_stylesheet_directory() . $rel;
+
+        wp_enqueue_style(
+            'survey-form',
+            get_stylesheet_directory_uri() . $rel,
+            ['permanent-makeup-style'], // ensure vars from style.css are loaded first
+            file_exists($path) ? filemtime($path) : wp_get_theme()->get('Version')
+        );}
 }
 add_action('wp_enqueue_scripts', 'permanent_makeup_enqueue_styles');
+
+
 
 // Menu
 
@@ -122,3 +135,54 @@ add_action('wp_enqueue_scripts', function () {
     }
 });
 
+// Survey form handling
+function survey_form_handler() {
+  if ( ! isset($_POST['survey_form_nonce']) || ! wp_verify_nonce($_POST['survey_form_nonce'], 'survey_form_nonce') ) {
+    wp_die('Security check failed', 400);
+  }
+
+//  fetch and sanitize form data
+  $firstname = sanitize_text_field( $_POST['firstname'] ?? '' );
+  $lastname  = sanitize_text_field( $_POST['lastname']  ?? '' );
+  $age       = intval( $_POST['age'] ?? 0 );
+  $gender    = sanitize_text_field( $_POST['gender'] ?? '' );
+  $city      = sanitize_text_field( $_POST['city'] ?? '' );
+  $comment   = sanitize_textarea_field( $_POST['comment'] ?? '' );
+
+  // Likert answers (q1..q6)
+  $answers = [];
+  for ($i=1; $i<=6; $i++) {
+    $answers["q{$i}"] = isset($_POST["q{$i}"]) ? sanitize_text_field($_POST["q{$i}"]) : '';
+  }
+
+  // Create a post to store 
+  $post_id = wp_insert_post([
+    'post_type'   => 'customer-response',   //new custom post type
+    'post_status' => 'publish',
+    'post_title'  => sprintf('RESPONSE from %s %s', $firstname, $lastname),
+  ]);
+
+  if ($post_id && !is_wp_error($post_id)) {
+    
+    update_field('first_name', $firstname, $post_id);
+    update_field('last_name',  $lastname,  $post_id);
+    update_field('age',        $age,       $post_id);
+    update_field('gender',     $gender,    $post_id);
+    update_field('city',       $city,      $post_id);
+    update_field('comment',    $comment,   $post_id);
+
+    // If you have individual text fields q1..q6:
+    foreach ($answers as $k => $v) {
+      update_field($k, $v, $post_id); // fields named q1, q2, ... q6
+    }
+   
+  }
+
+  // Redirect
+  $thankyou = get_page_by_path('thank-you');
+  $url = ($thankyou instanceof WP_Post) ? get_permalink($thankyou->ID) : home_url('/');
+  wp_safe_redirect($url);
+  exit;
+}
+add_action("admin_post_sample_form", "survey_form_handler");
+add_action("admin_post_nopriv_sample_form", "survey_form_handler");

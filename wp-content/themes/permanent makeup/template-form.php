@@ -55,7 +55,7 @@ get_template_part('template-parts/components/hero', null, [
       </div>
     <?php endif; ?>
   </div>
-  
+
   <form class="survey-form" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="POST" novalidate>
     <?php
       wp_nonce_field('survey_form_nonce', 'survey_form_nonce');
@@ -99,7 +99,7 @@ get_template_part('template-parts/components/hero', null, [
       </div>
     </div>
 
-    <!-- Likert section -->
+    <!-- Choice section -->
     <?php
       $scale = [
         pll__('I høj grad'),

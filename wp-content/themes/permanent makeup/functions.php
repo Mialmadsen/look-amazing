@@ -25,6 +25,12 @@ function permanent_makeup_enqueue_styles() {
         [],
         '6.5.0'
     );
+    wp_enqueue_style(
+    'font-awesome-brands',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/brands.min.css',
+    ['font-awesome-core'],
+    '6.5.0'
+);
     // 🔹 Form styles – only on the form template
     if ( is_page_template('template-form.php') ) { // adjust if in subfolder
         $rel  = '/css/form.css';
@@ -107,6 +113,24 @@ function pm_register_strings() {
         "Adresse:",
         "Har du lyst til at lære mere?",
         "Læs om FN 17 verdensmål, og bliv klogere på hvordan vi alle kan være med til at gøre en forskel.",
+        'Fornavn',
+        'Efternavn',
+        'Alder',
+        'Køn',
+        'Vælg',
+        'Mand',
+        'Kvinde',
+        'Andet',
+        'By',
+        'Tilføj',
+        'Send',
+        'Spørgeskema',
+        'I høj grad',
+        'I nogen grad',
+        'Neutral',
+        'I lav grad',
+        'Ved ikke',
+        'Accepter terms og conditions ved booking*'
     ];
 
     foreach ($strings as $s) {
@@ -171,7 +195,7 @@ function survey_form_handler() {
     update_field('city',       $city,      $post_id);
     update_field('comment',    $comment,   $post_id);
 
-    // If you have individual text fields q1..q6:
+    // individual text fields q1..q6:
     foreach ($answers as $k => $v) {
       update_field($k, $v, $post_id); // fields named q1, q2, ... q6
     }

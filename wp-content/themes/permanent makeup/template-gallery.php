@@ -1,7 +1,3 @@
-
-
-
-
 <?php 
 /**
  * Template Name: Gallery Template

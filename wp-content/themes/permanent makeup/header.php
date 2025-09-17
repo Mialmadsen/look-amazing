@@ -2,7 +2,8 @@
 <html <?php language_attributes(); ?>>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professionel permanent makeup og skønhedsbehandlinger i Esbjerg. Få smukke bryn, vipper og læber med naturligt resultat. Book din tid i dag!">
   <title><?php bloginfo('name'); ?></title>
   <?php wp_head(); ?>
 </head>

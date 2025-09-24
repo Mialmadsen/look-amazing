@@ -6,7 +6,7 @@
 $bg  = $args['background_image'] ?? '';
 $h2  = $args['heading'] ?? '';
 $h1  = $args['frontpage_heading'] ?? '';
-$h2  = $args['frontpage_subheading'] ?? '';
+$h3  = $args['frontpage_subheading'] ?? '';
 ?>
 
 <?php if ($bg) : ?>
@@ -16,8 +16,8 @@ $h2  = $args['frontpage_subheading'] ?? '';
     <?php if ($h1) : ?>
           <h1 class='hero-title'><?php echo esc_html($h1); ?></h1>
     <?php endif; ?>
-    <?php if ($h2) : ?>
-          <h2 class="hero-subtitle"><?php echo esc_html($h2); ?></h3>
+    <?php if ($h3) : ?>
+          <h3 class="hero-subtitle"><?php echo esc_html($h3); ?></h3>
     <?php endif; ?>
 
     <a class="hero-cta" href="">

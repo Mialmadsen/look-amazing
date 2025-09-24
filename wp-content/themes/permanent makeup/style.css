@@ -316,7 +316,7 @@ body{
   } 
 .card-meta{
   font-family: var(--font-heading);
-  color: var(--color-light-text);
+  color: var(--color-dark-text);
   text-transform: uppercase;
   font-size: var(--text-body);
   margin-bottom: 0.5rem;

@@ -43,7 +43,7 @@ get_template_part('template-parts/components/hero', null, [
 ]);
 ?>
 
-<section class="front-page-section form-section">
+<section class="front-page-section form-section" role="form">
   <div class="form-intro">
     <?php if ($h2): ?>
       <h2 class="section_heading"><?php echo esc_html($h2); ?></h2>

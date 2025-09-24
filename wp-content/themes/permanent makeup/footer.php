@@ -31,16 +31,6 @@
           <?php echo nl2br( esc_html($adress) ); ?>
         </p>
       <?php endif; ?>
-
-
-    <!--   <div class="footer-socials">
-        <a href="<?php echo esc_url('https://instagram.com/DININSTAGRAM'); ?>" target="_blank" rel="noopener">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="<?php echo esc_url('https://facebook.com/DINFACEBOOK'); ?>" target="_blank" rel="noopener">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-      </div> -->
     </div>
 
     <!-- åbningstider -->

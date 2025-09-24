@@ -35,7 +35,7 @@ get_template_part('template-parts/components/hero', null, [
 ]);
 ?>
 
-<section class="front-page-section sustainability">
+<section class="front-page-section sustainability" role="contentinfo">
   <div class="sust-container">
     <h2><?php echo esc_html($title_1); ?></h2>
     <div class="prose">
@@ -48,7 +48,7 @@ get_template_part('template-parts/components/hero', null, [
 </section>
 <?php get_template_part('template-parts/index', 'flyer'); ?>
 
-<section class="front-page-section sustainability">
+<section class="front-page-section sustainability" role="contentinfo">
   
     
 <h2><?php echo esc_html($title_2); ?></h2>
@@ -58,7 +58,7 @@ get_template_part('template-parts/components/hero', null, [
   </div>
 </section>
 
-<section class="front-page-section">
+<section class="front-page-section" role="contentinfo">
   <?php get_template_part('template-parts/blog-story', null, [
   'query_args' => [
     'p' => 223,   // your post ID

@@ -1,4 +1,4 @@
-<section class="front-page-section" id="gallery">
+<section class="front-page-section" id="gallery" role="banner">
   <?php
   // Assume the page and gallery exist (no extra checks)
   $gallery_page      = get_page_by_path('galleri-2');

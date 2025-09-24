@@ -1,4 +1,4 @@
-<section class="front-page-section" id="blog-stories">
+<section class="front-page-section" id="blog-stories" role="banner">
   <a class="section_heading" href="<?php echo esc_url( get_permalink( get_option('page_for_posts') ) ); ?>">
     <h2><?php pll_e("Anmeldelser")?>  <i class="fa-solid fa-thumbs-up"></i></h2>
   </a>

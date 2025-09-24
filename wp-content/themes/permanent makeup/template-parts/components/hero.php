@@ -17,7 +17,7 @@ $h3  = $args['frontpage_subheading'] ?? '';
           <h1 class='hero-title'><?php echo esc_html($h1); ?></h1>
     <?php endif; ?>
     <?php if ($h3) : ?>
-          <h3 class="hero-subtitle"><?php echo esc_html($h3); ?></h3>
+          <p class="hero-subtitle"><?php echo esc_html($h3); ?></p>
     <?php endif; ?>
 
     <a class="hero-cta" href="">

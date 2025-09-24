@@ -163,6 +163,14 @@ body{
   margin-top: 2px;
 }
 
+.hero-text p{
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  line-height: 1.5;
+  color: var(--color-beige);
+  margin-top: 12px;
+}
+
 .hero-content {
   width:100%;
   max-width: var(--width-12col);
@@ -661,8 +669,9 @@ body{
 }
 
 .post-meta { /*Written by admin + date*/
+  margin-top: 24px;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-dark-text);
 }
 
 .post-meta .post-author,

@@ -210,3 +210,13 @@ function survey_form_handler() {
 }
 add_action("admin_post_sample_form", "survey_form_handler");
 add_action("admin_post_nopriv_sample_form", "survey_form_handler");
+
+
+// Add aria-label to Home link in menu for accessibility
+function my_home_link_aria_label( $atts, $item, $args ) {
+    if ( $item->url === home_url( '/' ) ) {
+        $atts['aria-label'] = 'Home'; // Change label if needed
+    }
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'my_home_link_aria_label', 10, 3 );

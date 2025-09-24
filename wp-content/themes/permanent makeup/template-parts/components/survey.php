@@ -19,7 +19,7 @@ $link  = $args['link'] ?? '#';
 $link_text = $args['link_text'] ?? '';
 ?>
 
-<section class="survey">
+<section class="survey" role="banner">
   <div class="survey-content">
     <div class="survey-cta">
       <div class="clip-icon">

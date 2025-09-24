@@ -20,7 +20,7 @@ get_template_part('template-parts/components/hero', null, [
 ]);
 ?>
 
-<section class="front-page-section">
+<section class="front-page-section" role="banner">
 
 <div class="cards_layout_page fade-stagger">
            <?php if(have_posts()): ?>

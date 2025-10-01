@@ -1,0 +1,56 @@
+{
+    "deps/js/components/src/detect-outside/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/field-notice/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/fields-group/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/integer-control/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/panel-section/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/product-icon/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/settings-container/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/settings-sidebar/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/settings-tabs/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/upsell-panel/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/waiting-indicator/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/components/src/with-settings/index.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/utils/src/build-id.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/utils/src/get-integer-within-range.js": [
+        "build/settings-page/index.js"
+    ],
+    "deps/js/utils/src/render.js": [
+        "build/settings-page/index.js"
+    ],
+    "src/modules/settings-page/component-password-policy-settings.js": [
+        "build/settings-page/index.js"
+    ],
+    "src/modules/settings-page/component-tab-manage-password-policies.js": [
+        "build/settings-page/index.js"
+    ],
+    "src/modules/settings-page/index.js": [
+        "build/settings-page/index.js"
+    ]
+}

@@ -1,0 +1,98 @@
+== Changelog ==
+
+= 3.3.0 (2025-09-19) =
+* New feature: require users to provide their current password before changing it
+* New feature: added the ability to exclude certain users from being covered by the password policy (through PHP filter); this is useful when certain users are managed externally and we don't want to enforce the password policy on them (for example: users who log in through an SSO provider)
+* Compliance checks against the password policy refactored to avoid having duplicated logic in various modules
+* Dependencies updated
+* Code improvements
+
+= 3.2.2 (2025-07-24) =
+* Dependencies updated
+* Code improvements
+
+= 3.2.1 (2025-07-04) =
+* Plugin's readme.txt file updated
+
+= 3.2.0 (2025-07-01) =
+* Network activation process improved
+* Password expiry check on user interaction improved
+* Automated, conditional logout after plugin settings changes are saved implemented for current user affected by the new policy
+* Plugin container loader optimized to avoid duplicated instantiations
+* Plugin name updated to avoid confusion, now matching the project's name
+* Dependencies updated
+* Code improvements
+
+= 3.1.1 (2025-04-25) =
+* Issue with nonce in the password reset form on password expiry fixed
+* Settings screen style improvements
+* Dependencies updated
+* Code improvements
+
+= 3.1.0 (2025-04-04) =
+* Compatibility with WordPress 6.8 confirmed
+* Issue of requesting the translated string too early fixed
+* Ability to configure maximum password length introduced; allows to prevent denial-of-service attacks caused by hashing too long passwords
+* Dependencies updated
+* Code improvements
+
+= 3.0.0 (2025-02-21) =
+* The scenario where a user's password does not comply with the policy for reasons other than the minimum age, and the password age is unknown because the user has not changed the password since this plugin has been enabled, is now handled correctly
+* Integration with new account registration form improved
+* Password hint generation logic improved
+* Dependencies updated
+* Code improvements
+
+= 2.7.1 (2024-11-25) =
+* Plugin now checks whether the PRO version is activated; in case if it is, it stops loading itself
+* Uninstall file removed as it was out of date and could conflict with the PRO version of the plugin
+
+= 2.7.0 (2024-11-08) =
+* Custom capabilities for managing the plugin settings implemented
+* Compatibility with WordPress 6.7 confirmed
+* Dependencies updated
+* Code improvements
+
+= 2.6.1 (2024-10-25) =
+* JS dependency map and tree-shaking optimized
+* PHP 7.4 compatibility fixes implemented
+
+= 2.6.0 (2024-10-17) =
+* Fix blog switching bug in WordPress Multisite (Network) installations
+* Add caching to user roles getter function, along with proper cache invalidation, to improve the plugin's performance
+* Language mapping file added for easier generation of JSON translation files
+* Dependencies updated
+* Code improvements
+
+= 2.5.0 (2024-08-30) =
+* Compatibility with older version of PHP (7.4) implemented
+* Dependencies updated
+* Code improvements
+
+= 2.4.0 (2024-08-20) =
+* Password reset validation improvements - now rendering an user-friendly error message rather than a "wp_die" screen
+* Password hint logic improved
+* Required WordPress core version bumped to 6.6 to use the new React JSX runtime package
+* Plugin container implementation improved
+* Dependencies updated
+* Code improvements
+
+= 2.3.0 (2024-07-11) =
+* Settings page redesigned
+* Dependencies updated
+* Code improvements
+
+= 2.2.0 (2024-05-24) =
+* Dependencies updated
+* Code improvements
+* Basic onboarding process implemented
+
+= 2.1.1 (2024-04-26) =
+* Plugin assets and descriptions updated
+
+= 2.1.0 (2024-04-26) =
+* Code improvements and dependency updates
+* Improvements on plugin activation and deactivation hooks registration
+
+= 2.0.0 (2024-04-12) =
+* The first stable, public release

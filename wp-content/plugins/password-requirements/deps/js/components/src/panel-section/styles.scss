@@ -1,0 +1,39 @@
+@use "../variables" as *;
+
+/**
+ * Panel section
+ */
+.tsc-panel-section {
+	&__title {
+		font-size: 13px;
+		padding: 16px;
+		margin: 0;
+	}
+
+	&__fields {
+		padding: 0 16px 16px;
+	}
+}
+
+// No bottom padding for last section when inside the panel body.
+.components-panel__body .tsc-panel-section:last-child .tsc-panel-section__fields {
+	padding-bottom: 0;
+}
+
+.tsc-panel-section + .tsc-panel-section {
+	border-top: 1px solid $border-color;
+}
+
+.tsc-sortable-container .components-panel__body {
+	& > .tsc-panel-section {
+		margin: 0 -1rem;
+	}
+
+	& > .components-panel__body-title:has(+ .tsc-panel-section) {
+		margin: -16px -16px 0; // Might need review from time to time.
+	}
+
+	& > .components-panel__body-title + .tsc-panel-section {
+		border-top: 1px solid $border-color;
+	}
+}

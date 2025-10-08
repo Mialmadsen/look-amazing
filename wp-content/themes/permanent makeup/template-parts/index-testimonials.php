@@ -1,55 +1,124 @@
-<section class="front-page-section" id="blog-stories" role="banner">
-  <a class="section_heading" href="<?php echo esc_url( get_permalink( get_option('page_for_posts') ) ); ?>">
-    <h2><?php pll_e("Anmeldelser")?>  <i class="fa-solid fa-thumbs-up"></i></h2>
+<section class="front-page-section" id="blog-stories" role="region" aria-labelledby="section-heading-testimonials">
+
+  <a class="section_heading" href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">
+    <h2 id="section-heading-testimonials">
+      <?php pll_e("Anmeldelser"); ?>
+      <i class="fa-solid fa-thumbs-up" aria-hidden="true"></i>
+    </h2>
   </a>
+
   <div class="testimonial-wrapper fade-stagger">
     <?php
     $args = array(
       'post_type'      => 'testimonial',
-      'posts_per_page' => 3
+      'posts_per_page' => 3,
     );
+
     $query = new WP_Query($args);
 
     if ($query->have_posts()) :
-      while ($query->have_posts()) : $query->the_post();
+      while ($query->have_posts()) :
+        $query->the_post();
 
         $image = get_field('testimonial_image');
         $name  = get_field('testimonial_name');
         $text  = get_field('testimonial_body_text');
         $age   = get_field('testimonial_age');
         $date  = get_the_date();
-        ?>
-        
-        <div class="testimonial-card card">
-          <div class="testimonial-header">
+    ?>
+        <article class="testimonial-card card">
+          <header class="testimonial-header">
             <?php if (!empty($image)) : ?>
-              <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($name); ?>" class="testimonial-image" />
+              <img
+                src="<?php echo esc_url($image['url']); ?>"
+                alt="<?php echo esc_attr($name); ?>"
+                class="testimonial-image"
+              />
             <?php endif; ?>
 
             <?php if (!empty($name)) : ?>
-              <h3 class="testimonial-name"><?php echo esc_html($name); ?></h3>
+              <h3 class="testimonial-name">
+                <?php echo esc_html($name); ?>
+                <?php if (!empty($age)) : ?>
+                  <span class="testimonial-age">, <?php echo esc_html($age); ?></span>
+                <?php endif; ?>
+              </h3>
             <?php endif; ?>
-
-            <?php if (!empty($age)) : ?>
-              <span class="testimonial-age">, <?php echo esc_html($age); ?></span>
-            <?php endif; ?>
-          </div>
+          </header>
 
           <?php if (!empty($text)) : ?>
-            <p class="testimonial-text"><?php echo wp_trim_words(wp_kses_post($text), 50, '...'); ?></p>
+            <p class="testimonial-text">
+              <?php echo wp_trim_words(wp_kses_post($text), 50, '...'); ?>
+            </p>
           <?php endif; ?>
 
           <?php if (!empty($date)) : ?>
-            <p class="testimonial-date"><?php echo esc_html($date); ?></p>
+            <footer class="testimonial-date">
+              <time datetime="<?php echo get_the_date('c'); ?>">
+                <?php echo esc_html($date); ?>
+              </time>
+            </footer>
           <?php endif; ?>
-          </div>
-
-        <?php
+        </article>
+    <?php
       endwhile;
       wp_reset_postdata();
-      else :
-        echo '<p>Ingen testimonials fundet.</p>';
-      endif;
+    else :
+      echo '<p>Ingen testimonials fundet.</p>';
+    endif;
     ?>
   </div>
+
+  <?php if (is_user_logged_in()) : ?>
+
+    <?php if (isset($_GET['testimonial_submitted'])) : ?>
+      <div class="testimonial-success-message">
+        <p><?php pll_e("Tak! Din anmeldelse er sendt og afventer godkendelse."); ?></p>
+      </div>
+    <?php endif; ?>
+
+    <div class="testimonial-write-wrapper">
+      <a href="#testimonial-form-popup" class="testimonial-write-button">
+        <?php pll_e("Skriv en anmeldelse"); ?>
+      </a>
+    </div>
+
+    <div id="testimonial-form-popup" class="testimonial-modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
+      <div class="testimonial-modal-content">
+        <a href="#blog-stories" class="testimonial-close-button" aria-label="Luk">&times;</a>
+
+        <h3 id="form-title"><?php pll_e("Skriv din anmeldelse"); ?></h3>
+
+        <form method="post" class="testimonial-form" enctype="multipart/form-data">
+          <p>
+            <label for="testimonial_name"><?php pll_e("Navn"); ?> *</label>
+            <input type="text" id="testimonial_name" name="testimonial_name" required>
+          </p>
+
+          <p>
+            <label for="testimonial_age"><?php pll_e("Alder"); ?></label>
+            <input type="number" id="testimonial_age" name="testimonial_age" min="1">
+          </p>
+
+          <p>
+            <label for="testimonial_body"><?php pll_e("Din anmeldelse"); ?> *</label>
+            <textarea id="testimonial_body" name="testimonial_body" rows="5" required></textarea>
+          </p>
+
+          <p>
+            <label for="testimonial_image"><?php pll_e("Upload billede"); ?></label>
+            <input type="file" id="testimonial_image" name="testimonial_image" accept="image/*">
+          </p>
+
+          <?php wp_nonce_field('submit_testimonial', 'testimonial_nonce'); ?>
+
+          <p>
+            <button type="submit" name="submit_testimonial"><?php pll_e("Send anmeldelse"); ?></button>
+          </p>
+        </form>
+      </div>
+    </div>
+
+  <?php endif; ?>
+
 </section>

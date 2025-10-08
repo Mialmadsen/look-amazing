@@ -92,7 +92,46 @@ function permanent_makeup_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'permanent_makeup_enqueue_scripts');
 
+// Header user badge (login link vs. "Hi, Name")
+function theme_user_badge() {
+    $current_url = home_url( $_SERVER['REQUEST_URI'] ?? '/' );
 
+    if ( is_user_logged_in() ) {
+    $u = wp_get_current_user();
+    $name = $u->display_name ?: $u->user_login;
+    $initial = strtoupper( mb_substr( $name, 0, 1 ) );
+    $profile_url = get_edit_user_link( $u->ID );
+    $current_url = home_url( $_SERVER['REQUEST_URI'] ?? '/' );
+    ?>
+    <div class="user-badge">
+      <a class="user-badge__link" href="<?php echo esc_url( $profile_url ); ?>">
+        <span class="user-badge__avatar" aria-hidden="true"><?php echo esc_html( $initial ); ?></span>
+        <span class="user-badge__hi"><?php echo esc_html__('Hi, ', 'your-txt') . esc_html( $name ); ?></span>
+      </a>
+
+      <!-- CSS-only dropdown -->
+      <details class="user-badge__dropdown">
+        <summary class="user-badge__toggle" aria-label="Open user menu">
+          <i class="fa-solid fa-chevron-down"></i>
+        </summary>
+        <div class="user-badge__menu">
+          <a class="user-badge__menu-item" href="<?php echo esc_url( wp_logout_url( $current_url ) ); ?>">
+            <?php esc_html_e('Log out','your-txt'); ?>
+          </a>
+        </div>
+      </details>
+    </div>
+    <?php
+
+    } else {
+        ?>
+        <a class="login-link" href="<?php echo esc_url( wp_login_url( $current_url ) ); ?>" aria-label="<?php esc_attr_e('Log in','your-txt'); ?>">
+            <!-- your icon here; example using FA -->
+            <i class="fa-solid fa-right-to-bracket"></i>
+        </a>
+        <?php
+    }
+}
 
 // 4. Polylang strings
 

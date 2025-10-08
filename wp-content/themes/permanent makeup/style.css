@@ -76,6 +76,7 @@ body{
   justify-content: space-between;
 }
 
+
 .pm-nav__list {
   list-style: none;
   display: flex;
@@ -106,6 +107,12 @@ body{
   color: var(--color-light-text);
   white-space: nowrap;
 }
+.log_in{
+  font-size:26px; color:var(--color-light-text); cursor:pointer;
+  
+}
+
+
 .lang-switch ul { list-style: none; margin: 0; padding: 0; }
 .lang-switch li { display: inline; }
 .lang-switch li + li::before { content: " / "; color: var(--color-light-text); }
@@ -121,6 +128,65 @@ body{
 
 .pm-nav__toggle[aria-expanded="true"] .icon-bars { display: none; }
 .pm-nav__toggle[aria-expanded="true"] .icon-close { display: inline; }
+ 
+/* Base look */
+.user-badge { display:flex; align-items:center; gap:.75rem; position:relative; }
+.user-badge a { text-decoration:none; }              /* remove underline */
+.user-badge__link, .user-badge__menu-item {
+  font-family: var(--font-body);
+  color: var(--color-light-text);
+  font-size: var(--text-body);
+}
+
+/* Avatar circle */
+.user-badge__avatar{
+  width:28px; height:28px; border-radius:9999px;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight:700; line-height:1;
+  border:1px solid #ccc;
+  color: var(--color-light-text);
+}
+
+/* “Hi, Name” */
+.user-badge__hi{
+  font-weight:500; white-space:nowrap;
+}
+
+/* Details/summary toggle */
+.user-badge__dropdown { position:relative; }
+.user-badge__toggle { 
+  list-style:none; cursor:pointer; border:0; background:none; padding:0; 
+  display:inline-flex; align-items:center;
+  color: var(--color-light-text);
+}
+.user-badge__toggle::-webkit-details-marker { display:none; } /* hide default marker */
+
+/* Rotate chevron when open */
+.user-badge__dropdown[open] .user-badge__toggle i { transform: rotate(180deg); }
+
+/* Dropdown menu */
+.user-badge__menu{
+  position:absolute; right:0; top:calc(100% + 6px);
+  background: var(--color-beige);
+  color: var(--color-dark-text);
+  border:1px solid rgba(0,0,0,.08);
+ 
+  min-width: 140px;
+  padding: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+  z-index: 40;
+}
+
+/* Menu item look */
+.user-badge__menu-item{
+  display:block; padding:8px 10px; 
+  color: var(--color-dark-text);
+}
+.user-badge__menu-item:hover{ background: rgba(0,0,0,.06); }
+
+/* Logged-out icon style */
+.login-link i { font-size:26px; color:var(--color-light-text); cursor:pointer; }
+
 /* Hero image styling  */
 .hero-section {
   position: relative;

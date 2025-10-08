@@ -14,11 +14,12 @@
 
    
     <!-- Hamburger -->
-   <button class="pm-nav__toggle" aria-expanded="false" aria-controls="pm-menu">
-  <i class="fa-solid fa-bars icon-bars"></i>
-  <i class="fa-solid fa-xmark icon-close"></i>
-  
-</button>
+        <button class="pm-nav__toggle" aria-expanded="false" aria-controls="pm-menu">
+      <i class="fa-solid fa-bars icon-bars"></i>
+      <i class="fa-solid fa-xmark icon-close"></i>
+      
+        </button>
+      
 
     <?php
     // Pick the correct menu location by current language
@@ -47,6 +48,8 @@
         ]);
       } ?>
     </div>
+
+     <?php if ( function_exists('theme_user_badge') ) theme_user_badge(); ?>
 
   </div>
 </nav>

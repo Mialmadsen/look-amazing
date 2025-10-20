@@ -658,7 +658,137 @@ body{
       color: inherit;
       min-height: 300px;
       }
-    
+
+    /*Style for the testimonial pop up form*/ 
+      /* ========== TESTIMONIAL FORM MODAL ========== */
+      
+      .testimonial-modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+        font-family: var(--font-body);
+      }
+      
+      .testimonial-modal:target {
+        display: block;
+      }
+      
+      .testimonial-modal-content {
+        background: var(--color-beige);
+        padding: 2rem;
+        max-width: 500px;
+        margin: 10% auto;
+        position: relative;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        color: var(--color-dark-text);
+      }
+      
+      .testimonial-close-button {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 2rem;
+        text-decoration: none;
+        color: var(--color-dark-text);
+        font-weight: bold;
+      }
+      
+      .testimonial-modal h3 {
+        font-family: var(--font-heading);
+        font-size: var(--text-h3);
+        margin-bottom: 1.5rem;
+        color: var(--color-dark-text);
+      }
+      
+      /* FORM ELEMENTS */
+      
+      .testimonial-form label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-weight: bold;
+        font-size: var(--text-body);
+        color: var(--color-dark-text);
+      }
+      
+      .testimonial-form input,
+      .testimonial-form textarea {
+        width: 100%;
+        padding: 0.6em;
+        margin-bottom: 1.2em;
+        font-size: var(--text-body);
+        font-family: var(--font-body);
+        border: 1px solid var(--color-dark-grey);
+        border-radius: 4px;
+        background: var(--color-light-text);
+        color: var(--color-dark-text);
+      }
+      
+      .testimonial-form textarea {
+        resize: vertical;
+      }
+      
+      .testimonial-form input[type="file"] {
+        font-size: var(--text-body);
+        font-family: var(--font-body);
+        margin-top: 0.3em;
+        margin-bottom: 1.2em;
+        border: none;
+        background-color: transparent;
+        color: var(--color-dark-text);
+      }
+      
+      .testimonial-form button {
+        background-color: var(--color-dark-grey);
+        color: var(--color-light-text);
+        font-size: var(--text-body);
+        padding: 0.8em 1.5em;
+        border: none;
+        border-radius: 4px;
+        font-family: var(--font-body);
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+      }
+      
+      .testimonial-form button:hover {
+        background-color: var(--color-dark-text);
+      }
+      
+      /* WRITE BUTTON */
+      
+      .testimonial-write-button {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.8em 1.5em;
+        background-color: var(--color-dark-grey);
+        color: var(--color-light-text);
+        text-decoration: none;
+        font-size: var(--text-body);
+        font-family: var(--font-body);
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in-out;
+      }
+      
+      .testimonial-write-button:hover {
+        background-color: var(--color-dark-text);
+      }
+      
+      /* SUCCESS MESSAGE */
+      
+      .testimonial-success-message {
+        background: #dff0d8;
+        padding: 1em;
+        border-left: 5px solid #3c763d;
+        margin-top: 1em;
+        border-radius: 4px;
+        color: #3c763d;
+        font-family: var(--font-body);
+        font-size: var(--text-body);
+      }
+      
     /* Resten af CSS er som før */
     .testimonial-header {
       display: flex;

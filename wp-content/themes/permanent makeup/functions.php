@@ -259,3 +259,67 @@ function my_home_link_aria_label( $atts, $item, $args ) {
     return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'my_home_link_aria_label', 10, 3 );
+
+/* for the testimonial form*/ 
+function handle_testimonial_submission() {
+    if (
+      isset($_POST['submit_testimonial']) &&
+      isset($_POST['testimonial_nonce']) &&
+      wp_verify_nonce($_POST['testimonial_nonce'], 'submit_testimonial') &&
+      is_user_logged_in()
+    ) {
+      $name = sanitize_text_field($_POST['testimonial_name']);
+      $age = isset($_POST['testimonial_age']) ? intval($_POST['testimonial_age']) : '';
+      $body = sanitize_textarea_field($_POST['testimonial_body']);
+  
+      // Create the testimonial post
+      $post_id = wp_insert_post(array(
+        'post_type'   => 'testimonial',
+        'post_status' => 'pending', // or 'publish' if you want no moderation
+        'post_title'  => wp_trim_words($body, 8, '...'),
+        'post_content'=> $body,
+      ));
+  
+      if (!is_wp_error($post_id)) {
+        update_field('testimonial_name', $name, $post_id);
+        update_field('testimonial_age', $age, $post_id);
+        update_field('testimonial_body_text', $body, $post_id);
+  
+        // Handle image upload
+        if (!empty($_FILES['testimonial_image']['name'])) {
+          $file = $_FILES['testimonial_image'];
+  
+          if (!function_exists('wp_handle_upload')) {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+          }
+  
+          $upload_overrides = array('test_form' => false);
+          $movefile = wp_handle_upload($file, $upload_overrides);
+  
+          if ($movefile && !isset($movefile['error'])) {
+            $filename = $movefile['file'];
+            $filetype = wp_check_filetype($filename, null);
+            $attachment = array(
+              'post_mime_type' => $filetype['type'],
+              'post_title'     => sanitize_file_name(basename($filename)),
+              'post_content'   => '',
+              'post_status'    => 'inherit'
+            );
+  
+            $attach_id = wp_insert_attachment($attachment, $filename, $post_id);
+  
+            require_once(ABSPATH . 'wp-admin/includes/image.php');
+            $attach_data = wp_generate_attachment_metadata($attach_id, $filename);
+            wp_update_attachment_metadata($attach_id, $attach_data);
+  
+            update_field('testimonial_image', $attach_id, $post_id);
+          }
+        }
+      }
+  
+      wp_redirect(add_query_arg('testimonial_submitted', '1', wp_get_referer()));
+      exit;
+    }
+  }
+  add_action('template_redirect', 'handle_testimonial_submission');
+  

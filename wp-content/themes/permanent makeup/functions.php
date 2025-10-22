@@ -45,7 +45,23 @@ function permanent_makeup_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'permanent_makeup_enqueue_styles');
 
+function pm_register_auth_style() {
+    wp_register_style(
+        'pm-auth',
+        get_stylesheet_directory_uri() . '/assets/css/auth.css',
+        [],
+        '1.0'
+    );
+}
+add_action('wp_enqueue_scripts', 'pm_register_auth_style');
 
+// SRP: enqueue the auth stylesheet only on our auth templates
+function pm_enqueue_auth_style_when_needed() {
+    if ( is_page_template('page-login.php') || is_page_template('page-register.php') ) {
+        wp_enqueue_style('pm-auth');
+    }
+}
+add_action('wp_enqueue_scripts', 'pm_enqueue_auth_style_when_needed', 20);
 
 // Menu
 
@@ -126,8 +142,8 @@ function theme_user_badge() {
     } else {
         ?>
         <a class="login-link" href="<?php echo esc_url( wp_login_url( $current_url ) ); ?>" aria-label="<?php esc_attr_e('Log in','your-txt'); ?>">
-            <!-- your icon here; example using FA -->
-            <i class="fa-solid fa-right-to-bracket"></i>
+            
+            <i class="fa-solid fa-user"></i>
         </a>
         <?php
     }

@@ -1,0 +1,15 @@
+/* Auth-only styles: login + register */
+body.tml-action-login,
+body.tml-action-register {
+  /* page base */
+  background: var(--color-beige);
+  color: var(--color-dark-text);
+  font-family: var(--font-body);
+}
+
+/* remove default underlines if you want */
+body.tml-action-login a,
+body.tml-action-register a {
+  text-decoration: none;
+  color: var(--color-accent-text);
+}

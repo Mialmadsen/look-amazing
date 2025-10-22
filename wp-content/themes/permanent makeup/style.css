@@ -32,6 +32,7 @@ version: 1.0
     --color-beige: #E1D8C6;
     --color-light-text: #F7F7F7;
     --color-dark-text: #0D0C1D;
+    --color-accent-text: #7A1E1E;
   
     /* Dimentions */
       --width-full: 100%;
@@ -107,10 +108,7 @@ body{
   color: var(--color-light-text);
   white-space: nowrap;
 }
-.log_in{
-  font-size:26px; color:var(--color-light-text); cursor:pointer;
-  
-}
+
 
 
 .lang-switch ul { list-style: none; margin: 0; padding: 0; }
@@ -182,10 +180,10 @@ body{
   display:block; padding:8px 10px; 
   color: var(--color-dark-text);
 }
-.user-badge__menu-item:hover{ background: rgba(0,0,0,.06); }
+.user-badge__menu-item:hover{ color:var(--color-accent-text); }
 
 /* Logged-out icon style */
-.login-link i { font-size:26px; color:var(--color-light-text); cursor:pointer; }
+.login-link i { font-size: 20px; line-height: 1; color:var(--color-light-text); cursor:pointer; }
 
 /* Hero image styling  */
 .hero-section {
@@ -390,7 +388,7 @@ body{
   } 
 .card-meta{
   font-family: var(--font-heading);
-  color: var(--color-dark-text);
+  color: var(--color-accent-text);
   text-transform: uppercase;
   font-size: var(--text-body);
   margin-bottom: 0.5rem;

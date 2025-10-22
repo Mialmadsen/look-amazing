@@ -1,1 +1,3 @@
 2025-10-22T10:48:08+00:00 INFO Payment gateway enabled: "Stripe"
+2025-10-22T10:09:38+00:00 INFO Payment gateway enabled: "Cash on delivery"
+2025-10-22T10:13:27+00:00 INFO Payment gateway enabled: "Direct bank transfer"

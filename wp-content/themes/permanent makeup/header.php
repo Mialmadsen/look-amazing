@@ -9,7 +9,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<nav class="pm-nav">
+<nav class="pm-nav login-nav">
   <div class="pm-nav__inner">
 
    

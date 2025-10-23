@@ -78,46 +78,48 @@
     <?php endif; ?>
 
     <div class="testimonial-write-wrapper">
-      <a href="#testimonial-form-popup" class="testimonial-write-button">
-        <?php pll_e("Skriv en anmeldelse"); ?>
-      </a>
-    </div>
+  <a href="#testimonial-form-popup" class="testimonial-write-button">
+    <?php echo esc_html( pll__( 'Skriv en anmeldelse' ) ); ?>
+  </a>
+</div>
 
-    <div id="testimonial-form-popup" class="testimonial-modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
-      <div class="testimonial-modal-content">
-        <a href="#blog-stories" class="testimonial-close-button" aria-label="Luk">&times;</a>
+<div id="testimonial-form-popup" class="testimonial-modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
+  <div class="testimonial-modal-content">
+    <a href="#blog-stories" class="testimonial-close-button" aria-label="<?php echo esc_attr( pll__( 'Luk' ) ); ?>">&times;</a>
 
-        <h3 id="form-title"><?php pll_e("Skriv din anmeldelse"); ?></h3>
+    <h3 id="form-title"><?php echo esc_html( pll__( 'Skriv din anmeldelse' ) ); ?></h3>
 
-        <form method="post" class="testimonial-form" enctype="multipart/form-data">
-          <p>
-            <label for="testimonial_name"><?php pll_e("Navn"); ?> *</label>
-            <input type="text" id="testimonial_name" name="testimonial_name" required>
-          </p>
+    <form method="post" class="testimonial-form" enctype="multipart/form-data">
+      <p>
+        <label for="testimonial_name"><?php echo esc_html( pll__( 'Navn' ) ); ?> *</label>
+        <input type="text" id="testimonial_name" name="testimonial_name" required>
+      </p>
 
-          <p>
-            <label for="testimonial_age"><?php pll_e("Alder"); ?></label>
-            <input type="number" id="testimonial_age" name="testimonial_age" min="1">
-          </p>
+      <p>
+        <label for="testimonial_age"><?php echo esc_html( pll__( 'Alder' ) ); ?></label>
+        <input type="number" id="testimonial_age" name="testimonial_age" min="1">
+      </p>
 
-          <p>
-            <label for="testimonial_body"><?php pll_e("Din anmeldelse"); ?> *</label>
-            <textarea id="testimonial_body" name="testimonial_body" rows="5" required></textarea>
-          </p>
+      <p>
+        <label for="testimonial_body"><?php echo esc_html( pll__( 'Din anmeldelse' ) ); ?> *</label>
+        <textarea id="testimonial_body" name="testimonial_body" rows="5" required></textarea>
+      </p>
 
-          <p>
-            <label for="testimonial_image"><?php pll_e("Upload billede"); ?></label>
-            <input type="file" id="testimonial_image" name="testimonial_image" accept="image/*">
-          </p>
+      <p>
+        <label for="testimonial_image"><?php echo esc_html( pll__( 'Upload billede' ) ); ?></label>
+        <input type="file" id="testimonial_image" name="testimonial_image" accept="image/*">
+      </p>
 
-          <?php wp_nonce_field('submit_testimonial', 'testimonial_nonce'); ?>
+      <?php wp_nonce_field('submit_testimonial', 'testimonial_nonce'); ?>
 
-          <p>
-            <button type="submit" name="submit_testimonial"><?php pll_e("Send anmeldelse"); ?></button>
-          </p>
-        </form>
-      </div>
-    </div>
+      <p>
+        <button type="submit" name="submit_testimonial">
+          <?php echo esc_html( pll__( 'Send anmeldelse' ) ); ?>
+        </button>
+      </p>
+    </form>
+  </div>
+</div>
 
   <?php endif; ?>
 

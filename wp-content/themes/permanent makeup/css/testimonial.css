@@ -1,0 +1,195 @@
+/* ===== Testimonials ===== */
+
+.testimonial-wrapper{
+  max-width: var(--width-12col);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: var(--color-beige);
+}
+
+.testimonial-card{
+  background: var(--color-beige);
+  border: 1px solid var(--color-dark-grey);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex: 1 1 calc(33.333% - 20px);
+  min-width: 280px;                /* keeps layout from collapsing on small screens */
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  color: var(--color-dark-text);
+  min-height: 300px;
+}
+
+/* header (avatar + name/age/date) */
+.testimonial-header{ display:flex; align-items:center; gap:1rem; }
+
+.testimonial-image{
+  width: 60px; height: 60px; object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.testimonial-name{
+  font-family: var(--font-heading);
+  font-size: var(--text-body);     /* fixed: was --body-text */
+  color: var(--color-dark-text);
+  margin: 0;
+  white-space: normal;
+}
+
+.testimonial-age,
+.testimonial-date{
+  font-family: var(--font-heading);
+  font-size: var(--text-body);
+  color: var(--color-accent-text);
+}
+
+.testimonial-text{
+  font-size: var(--text-body);
+  color: var(--color-dark-grey);
+  line-height: 1.5;
+  margin: 0;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* ===== Modal (CSS :target) ===== */
+
+.testimonial-modal{
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 9999;
+  font-family: var(--font-body);
+}
+.testimonial-modal:target{ display:block; }
+
+.testimonial-modal-content{
+  background: var(--color-beige);
+  color: var(--color-dark-text);
+  max-width: 560px;
+  width: min(92%, 560px);
+  /* center block without relying on top margin */
+  position: absolute; left: 50%; top: 10%;
+  transform: translateX(-50%);
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+.testimonial-close-button{
+  position: absolute; top: 10px; right: 15px;
+  font-size: 2rem; font-weight: 700;
+  color: var(--color-dark-grey);
+  text-decoration: none;
+}
+
+/* Title */
+.testimonial-modal h3{
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  margin: 0 0 1rem;
+  color: var(--color-dark-text);
+}
+
+/* ===== Form elements (flat, no rounded corners) ===== */
+
+.testimonial-form label{
+  display:block;
+  margin: 0 0 6px;
+  font-weight: 700;
+  font-size: var(--text-body);
+  color: var(--color-dark-text);
+}
+
+.testimonial-form input,
+.testimonial-form textarea{
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 14px;
+  font: inherit;
+  font-size: var(--text-body);
+  border: 1px solid var(--color-dark-grey);
+  border-radius: 0;                      /* flat */
+  background: #fff;
+  color: var(--color-dark-text);
+  line-height: 1.4;
+}
+
+.testimonial-form textarea{ resize: vertical; min-height: 120px; }
+
+.testimonial-form input[type="file"]{
+  padding: 0; border: 0; background: transparent; color: var(--color-dark-text);
+  margin-top: 4px; margin-bottom: 14px;
+}
+
+/* focus */
+.testimonial-form input:focus,
+.testimonial-form textarea:focus{
+  outline: 2px solid var(--color-accent-text);
+  outline-offset: 1px;
+}
+
+/* submit button (matches your buttons) */
+.testimonial-form button{
+  display: inline-flex; align-items:center; justify-content:center;
+  background: transparent;
+  color: var(--color-dark-grey);
+  font-size: var(--text-body);
+  padding: 10px 22px;
+  border: 1px solid var(--color-dark-grey);
+  border-radius: 0;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.testimonial-form button:hover,
+.testimonial-form button:focus{
+  background: var(--color-dark-grey);
+  color: var(--color-light-text);
+}
+
+/* Write button (same look as submit) */
+.testimonial-write-button{
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 10px 22px;
+  background: transparent;
+  color: var(--color-dark-grey);
+  border: 1px solid var(--color-dark-grey);
+  border-radius: 0;
+  text-decoration: none;
+  font-size: var(--text-body);
+  font-family: var(--font-body);
+  transition: background .2s ease, color .2s ease;
+}
+.testimonial-write-button:hover,
+.testimonial-write-button:focus{
+  background: var(--color-dark-grey);
+  color: var(--color-light-text);
+}
+
+/* ===== Success notice (matches pm-notice look) ===== */
+
+.testimonial-success-message{
+  margin: 12px 0 24px;
+  padding: 10px 14px 10px 16px;
+  border-left: 4px solid var(--color-accent-text);
+  background: color-mix(in srgb, var(--color-accent-text) 12%, transparent);
+  color: var(--color-dark-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+}
+
+/* ===== Small tweaks ===== */
+
+@media (max-width: 820px){
+  .testimonial-card{ flex: 1 1 calc(50% - 20px); }
+}
+@media (max-width: 540px){
+  .testimonial-card{ flex: 1 1 100%; }
+}

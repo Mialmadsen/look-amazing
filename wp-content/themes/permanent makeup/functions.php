@@ -4,21 +4,15 @@
 // 1. Styles & Fonts
 
 function permanent_makeup_enqueue_styles() {
-    // Main Stylesheet
+    // 1) Main stylesheet (cache-busted)
     wp_enqueue_style(
         'permanent-makeup-style',
         get_stylesheet_uri(),
         [],
-        filemtime(get_stylesheet_directory() . '/style.css') // cache-bust
+        filemtime( get_stylesheet_directory() . '/style.css' )
     );
 
-    // Load only the Font Awesome subset you need (solid only, lighter than full FA)
-    wp_enqueue_style(
-        'font-awesome-solid',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/solid.min.css',
-        [],
-        '6.5.0'
-    );
+    // 2) Font Awesome (core + subsets)
     wp_enqueue_style(
         'font-awesome-core',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/fontawesome.min.css',
@@ -26,42 +20,47 @@ function permanent_makeup_enqueue_styles() {
         '6.5.0'
     );
     wp_enqueue_style(
-    'font-awesome-brands',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/brands.min.css',
-    ['font-awesome-core'],
-    '6.5.0'
-);
-    // 🔹 Form styles – only on the form template
-    if ( is_page_template('template-form.php') ) { // adjust if in subfolder
+        'font-awesome-solid',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/solid.min.css',
+        ['font-awesome-core'],
+        '6.5.0'
+    );
+    wp_enqueue_style(
+        'font-awesome-brands',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/brands.min.css',
+        ['font-awesome-core'],
+        '6.5.0'
+    );
+
+    // 3) Form CSS (only on the survey form template)
+    if ( is_page_template( 'template-form.php' ) ) { // adjust to your filename
         $rel  = '/css/form.css';
         $path = get_stylesheet_directory() . $rel;
 
         wp_enqueue_style(
             'survey-form',
             get_stylesheet_directory_uri() . $rel,
-            ['permanent-makeup-style'], // ensure vars from style.css are loaded first
-            file_exists($path) ? filemtime($path) : wp_get_theme()->get('Version')
-        );}
-}
-add_action('wp_enqueue_scripts', 'permanent_makeup_enqueue_styles');
+            ['permanent-makeup-style'],
+            file_exists($path) ? filemtime($path) : null
+        );
+    }
 
-function pm_register_auth_style() {
-    wp_register_style(
-        'pm-auth',
-        get_stylesheet_directory_uri() . '/assets/css/auth.css',
-        [],
-        '1.0'
+    // 4) Testimonial CSS (only on login/register templates)
+    if ( is_front_page() || is_home() ) {
+    $rel  = '/css/testimonial.css';
+    $path = get_stylesheet_directory() . $rel;
+
+    wp_enqueue_style(
+        'testimonial-form',
+        get_stylesheet_directory_uri() . $rel,
+        ['permanent-makeup-style'],
+        file_exists($path) ? filemtime($path) : null
     );
 }
-add_action('wp_enqueue_scripts', 'pm_register_auth_style');
-
-// SRP: enqueue the auth stylesheet only on our auth templates
-function pm_enqueue_auth_style_when_needed() {
-    if ( is_page_template('page-login.php') || is_page_template('page-register.php') ) {
-        wp_enqueue_style('pm-auth');
-    }
 }
-add_action('wp_enqueue_scripts', 'pm_enqueue_auth_style_when_needed', 20);
+add_action( 'wp_enqueue_scripts', 'permanent_makeup_enqueue_styles' );
+
+
 
 // Menu
 
@@ -185,7 +184,16 @@ function pm_register_strings() {
         'Neutral',
         'I lav grad',
         'Ved ikke',
-        'Accepter terms og conditions ved booking*'
+        'Accepter terms og conditions ved booking*',
+        'Skriv din anmeldelse',
+        'Skriv en anmeldelse',
+        'Din anmeldelse', 
+        'Upload billede', 
+        'Send anmeldelse',
+        'Luk',
+        'Navn',
+        'Tak for din anmeldelse!',
+        'Din anmeldelse afventer godkendelse. Vi publicerer den, når en administrator har godkendt den.',
     ];
 
     foreach ($strings as $s) {
@@ -193,6 +201,8 @@ function pm_register_strings() {
     }
 }
 add_action("init", "pm_register_strings");
+
+
 
 
 
@@ -277,6 +287,14 @@ function my_home_link_aria_label( $atts, $item, $args ) {
 add_filter( 'nav_menu_link_attributes', 'my_home_link_aria_label', 10, 3 );
 
 /* for the testimonial form*/ 
+
+function pm_get_testimonial_redirect_url() {
+    $home = function_exists('pll_home_url') ? pll_home_url() : home_url('/');
+    // ensure trailing slash then add anchor to close the :target modal
+    $url  = trailingslashit($home) . '#blog-stories';
+    // add a success flag so we can show a message
+    return add_query_arg('testimonial_submitted', '1', $url);
+}
 function handle_testimonial_submission() {
     if (
       isset($_POST['submit_testimonial']) &&
@@ -333,7 +351,7 @@ function handle_testimonial_submission() {
         }
       }
   
-      wp_redirect(add_query_arg('testimonial_submitted', '1', wp_get_referer()));
+      wp_redirect( pm_get_testimonial_redirect_url() );
       exit;
     }
   }

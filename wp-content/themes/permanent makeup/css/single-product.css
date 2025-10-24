@@ -1,0 +1,208 @@
+/* =========================
+   SINGLE PRODUCT — TOP AREA
+   ========================= */
+body.single-product {
+  --ink: var(--color-dark-text);
+  --accent: var(--color-dark-grey);       /* for buttons */
+  --price-accent: var(--color-accent-text); /* your accent color for price */
+  --bg-soft: var(--color-beige);
+  --on-dark: var(--color-light-text);
+}
+
+/* Title / price */
+body.single-product .product_title {
+  font-family: var(--font-heading);
+  color: var(--color-dark-grey);
+  margin: 0 0 8px;
+}
+body.single-product .price,
+body.single-product p.price,
+body.single-product span.price {
+  font-family: var(--font-heading);
+  color: var(--price-accent);
+  margin: 6px 0 14px;
+}
+
+/* Price "badge" accent (square, no rounding) */
+body.single-product .price .amount,
+body.single-product p.price .amount,
+body.single-product span.price .amount {
+  
+  color: var(--price-accent);
+  padding: 4px 8px;
+  border-radius: 0;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+/* =========================
+   ADD TO CART ROW SPACING
+   ========================= */
+body.single-product form.cart {
+  display: flex;
+  align-items: center;
+  gap: 12px;              /* <- space between qty and button */
+  margin: 6px 0 8px;
+}
+body.single-product .quantity .qty {
+  height: 42px; width: 84px;
+  border: 1px solid rgba(0,0,0,.18);
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 0;
+  font-family: var(--font-body);
+}
+body.single-product .single_add_to_cart_button.button {
+  background: var(--accent);          /* dark-grey button */
+  color: var(--on-dark);
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-family: var(--font-body);
+  padding: 10px 18px;
+  line-height: 1.2;
+  transition: filter .2s ease, transform .15s ease;
+}
+body.single-product .single_add_to_cart_button.button:hover {
+  background: var(--on-dark);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Space before the meta (Categories/Tags line) */
+body.single-product .product_meta {
+  margin-top: 12px;
+  font-family: var(--font-body);
+    color: var(--color-dark-text);
+}
+
+/* =========================
+   CATEGORIES AS BUTTON-BADGES
+   (like your .card-category)
+   ========================= */
+
+/* Hide the default "Categories:" label; we’ll restyle it */
+body.single-product .product_meta .posted_in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+body.single-product .product_meta .posted_in > a {
+  /* badge look */
+  background: var(--color-dark-grey);
+  color: var(--color-light-text);
+  padding: 4px 10px;
+  text-decoration: none;
+  border-radius: 0;
+  font-family: var(--font-body);
+  line-height: 1.4;
+  display: inline-block;
+}
+
+body.single-product .product_meta .posted_in a {
+  text-decoration: none !important;
+}
+body.single-product .product_meta .posted_in a:hover {
+  filter: brightness(.95);
+}
+
+
+
+/* =========================
+   TABS — FLAT, NO UNDERLINES
+   ========================= */
+body.single-product .woocommerce-tabs { background: transparent; box-shadow: none; border: 0; }
+body.single-product .woocommerce-tabs ul.tabs {
+  display: flex; gap: 16px;
+  margin: 28px 0 0; padding: 0;
+  ;
+}
+body.single-product .woocommerce-tabs ul.tabs:before { display: none !important; }
+body.single-product .woocommerce-tabs ul.tabs li {
+  margin: 0; padding: 0; border: 0; background: transparent;
+}
+body.single-product .woocommerce-tabs ul.tabs li:before,
+body.single-product .woocommerce-tabs ul.tabs li:after { display: none !important; }
+body.single-product .woocommerce-tabs ul.tabs li a {
+  text-decoration: none !important;         /* <- no underline */
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--color-dark-grey);
+  padding: 10px 2px;
+  font-family: var(--font-body);
+}
+body.single-product .woocommerce-tabs ul.tabs li.active a {
+  color: var(--accent);
+  box-shadow: inset 0 -2px 0 var(--accent);  /* subtle active indicator, not underline decoration */
+}
+body.single-product .woocommerce-Tabs-panel {
+  padding: 18px 0 0;
+  font-family: var(--font-body);
+  color: var(--color-dark-text);
+  line-height: 1.7;
+}
+
+/* =========================
+   RELATED / UPSELLS STRIP
+   ========================= */
+.woocommerce .related,
+.woocommerce .upsells {
+  margin-top: 42px;
+}
+.woocommerce .related h2,
+.woocommerce .upsells h2 {
+  font-family: var(--font-heading);
+  color: var(--color-dark-grey);
+  margin: 0 0 18px;
+}
+
+/* Prices in related products: accent color */
+.woocommerce .related ul.products li.product .price,
+.woocommerce .upsells ul.products li.product .price {
+  color: var(--price-accent);
+  font-family: var(--font-heading);
+}
+
+/* Buttons in related products: dark-grey */
+.woocommerce .related ul.products li.product a.button,
+.woocommerce .upsells ul.products li.product a.button,
+.woocommerce .related ul.products li.product .added_to_cart,
+.woocommerce .upsells ul.products li.product .added_to_cart {
+  background: var(--accent);
+  color: var(--on-dark);
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-family: var(--font-body);
+  padding: 8px 14px;
+  line-height: 1.2;
+  transition: filter .2s ease, transform .15s ease;
+}
+.woocommerce .related ul.products li.product a.button:hover,
+.woocommerce .upsells ul.products li.product a.button:hover,
+.woocommerce .related ul.products li.product .added_to_cart:hover,
+.woocommerce .upsells ul.products li.product .added_to_cart:hover {
+  filter: brightness(.95);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   GENERAL / CLEANUP
+   ========================= */
+
+/* no rounded corners anywhere in these areas */
+.woocommerce img,
+.woocommerce button,
+.woocommerce input,
+.woocommerce .button,
+.woocommerce ul.products li.product,
+.woocommerce div.product div.images,
+.woocommerce .woocommerce-tabs,
+.woocommerce .related ul.products li.product,
+.woocommerce .upsells ul.products li.product {
+  border-radius: 0 !important;
+}
+
+/* Ensure default link decorations don’t sneak back in meta/tabs */
+.woocommerce a { text-decoration-thickness: 0.06em; }
+body.single-product .product_meta a,
+body.single-product .woocommerce-tabs a { text-decoration: none; }

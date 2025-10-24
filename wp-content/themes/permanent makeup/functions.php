@@ -59,8 +59,29 @@ function permanent_makeup_enqueue_styles() {
 }
 }
 add_action( 'wp_enqueue_scripts', 'permanent_makeup_enqueue_styles' );
+// Load custom styles (and optional animations) only on Shop + product categories
+add_action('wp_enqueue_scripts', function () {
+  if ( is_shop() || is_product_taxonomy() ) {
+    wp_enqueue_style(
+      'shop-tweaks',
+      get_stylesheet_directory_uri() . '/css/shop.css',
+      [],
+      '1.0'
+    );
+    
+  }
+});
 
-
+add_action('wp_enqueue_scripts', function () {
+  if ( is_product() ) {
+    wp_enqueue_style(
+      'single-product-tweaks',
+      get_stylesheet_directory_uri() . '/css/single-product.css',
+      [],
+      '1.0'
+    );
+  }
+});
 
 // Menu
 
@@ -73,6 +94,11 @@ function permanent_makeup_register_menus() {
 }
 add_action('after_setup_theme', 'permanent_makeup_register_menus');
 
+
+// WooCommerce support
+add_action('after_setup_theme', function() {
+    add_theme_support('woocommerce');
+});
 
 // 3. Scripts (GSAP + Custom)
 
@@ -106,6 +132,16 @@ function permanent_makeup_enqueue_scripts() {
     }
 }
 add_action('wp_enqueue_scripts', 'permanent_makeup_enqueue_scripts');
+
+add_action('wp_enqueue_scripts', function () {
+  if ( is_shop() || is_product_taxonomy() ) {
+    wp_enqueue_script(
+      'products-reveal',
+      get_stylesheet_directory_uri() . '/JS/shop.js',
+      [], '1.0', true
+    );
+  }
+});
 
 // Header user badge (login link vs. "Hi, Name")
 function theme_user_badge() {
@@ -166,7 +202,7 @@ function pm_register_strings() {
         "Åbningstider:",
         "Adresse:",
         "Har du lyst til at lære mere?",
-        "Læs om FN 17 verdensmål, og bliv klogere på hvordan vi alle kan være med til at gøre en forskel.",
+        "Læs om FN 17 verdensmål, og bliv klogere på hvordan vi alle kan være med til to gøre en forskel.",
         'Fornavn',
         'Efternavn',
         'Alder',
@@ -356,4 +392,3 @@ function handle_testimonial_submission() {
     }
   }
   add_action('template_redirect', 'handle_testimonial_submission');
-  

@@ -1,0 +1,144 @@
+/* Scope to Woo list pages only */
+body.post-type-archive-product,
+body.tax-product_cat {
+  --card-bg: var(--color-beige);
+  --card-fg: var(--color-dark-grey);
+  --btn-bg: var(--color-dark-grey);
+  --btn-fg: var(--color-light-text);
+}
+
+/* Container + title spacing (align with your .front-page-section) */
+.woocommerce .woocommerce-products-header,
+.woocommerce .woocommerce-result-count,
+.woocommerce .woocommerce-ordering {
+  font-family: var(--font-body);
+  color: var(--color-dark-grey);
+}
+.woocommerce .woocommerce-products-header__title.page-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  color: var(--color-dark-grey);
+  margin-bottom: 2rem;
+}
+
+/* Product grid gaps similar to your .cards_layout_page */
+.woocommerce ul.products {
+  gap: 40px !important;           /* modern themes respect gap */
+  margin-top: 2rem;
+}
+
+/* Card base — make Woo products look like your article cards */
+.woocommerce ul.products li.product {
+  background: var(--card-bg);
+  color: var(--card-fg);
+  font-family: var(--font-body);
+  
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  transition: transform .2s ease, box-shadow .2s ease;
+  padding-bottom: 18px; /* room for price/button */
+}
+
+/* Image wrapper behavior */
+.woocommerce ul.products li.product a img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+.woocommerce ul.products li.product:hover a img {
+  transform: scale(1.06);
+}
+
+/* Title */
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  color: var(--color-dark-grey);
+  padding: 18px 24px 6px;
+  margin: 0;
+}
+
+/* Category badge line (if theme outputs) */
+.woocommerce ul.products li.product .woocommerce-loop-category__title,
+.woocommerce ul.products li.product .posted_in a {
+  font-family: var(--font-body);
+}
+
+/* Price + add-to-cart row */
+.woocommerce ul.products li.product .price {
+  font-family: var(--font-heading);
+  font-size: var(--text-body);
+  color: var(--color-accent-text);
+  padding: 0 24px;
+  margin: 6px 0 10px;
+  display: inline-block;
+}
+
+/* Woo default button → your button style */
+.woocommerce ul.products li.product a.button,
+.woocommerce ul.products li.product .added_to_cart {
+  display: inline-block;
+  margin: 0 24px;
+  padding: 8px 14px;
+
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.2;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border-radius: 0; /* fixed from 'none' to explicit 0 */
+  transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.woocommerce ul.products li.product a.button:hover,
+.woocommerce ul.products li.product .added_to_cart:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,.12);
+  filter: brightness(0.95);
+}
+
+
+
+/* Sale flash badge tweak (optional) */
+.woocommerce span.onsale {
+  background: var(--color-dark-grey);
+  color: var(--color-light-text);
+  font-family: var(--font-body);
+  border-radius: 999px;
+  padding: 6px 10px;
+  min-height: auto;
+  min-width: auto;
+  top: 12px;
+  left: 12px;
+}
+
+/* Pagination style to fit your typography */
+.woocommerce nav.woocommerce-pagination {
+  margin-top: 40px;
+  font-family: var(--font-body);
+}
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span {
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+.woocommerce nav.woocommerce-pagination ul li span.current {
+  background: var(--color-dark-grey);
+  color: var(--color-light-text);
+  border-color: var(--color-dark-grey);
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  .woocommerce ul.products li.product .woocommerce-loop-product__title {
+    font-size: calc(var(--text-h4) * 0.9);
+  }
+  .woocommerce ul.products li.product a img {
+    height: 210px;
+  }
+}
+

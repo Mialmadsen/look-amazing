@@ -1,5 +1,6 @@
 <?php
 
+
 defined('ABSPATH') || exit;
 
 get_header('shop'); ?>
@@ -11,12 +12,13 @@ get_header('shop'); ?>
   // Optional: show the page title pulled from the assigned Shop page
   if ( apply_filters('woocommerce_show_page_title', true) ) {
     echo '<a class="section_heading" href="' . esc_url( get_permalink( wc_get_page_id('shop') ) ) . '">';
-    echo '<h2>' . woocommerce_page_title(false) . '</h2>';
+    // echo '<h2>' . woocommerce_page_title(false) . '</h2>';
     echo '</a>';
   }
 
   // Optional: render the Shop page editor content (intro text, blocks)
   do_action('woocommerce_archive_description');
+  do_action('woocommerce_before_shop_loop');
 
   if ( woocommerce_product_loop() ) :
 

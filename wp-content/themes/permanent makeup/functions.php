@@ -58,19 +58,33 @@ function permanent_makeup_enqueue_styles() {
     );
 }
 }
+
+
 add_action( 'wp_enqueue_scripts', 'permanent_makeup_enqueue_styles' );
 // Load custom styles (and optional animations) only on Shop + product categories
 add_action('wp_enqueue_scripts', function () {
-  if ( is_shop() || is_product_taxonomy() ) {
+  // Native Woo contexts
+  $is_shopish = is_shop() || is_product_taxonomy();
+
+  // Your English page that acts like the shop
+  $is_treatments =
+       is_page('treatments')                                   // match by slug
+    || is_page_template('page-templates/treatments-shop-en.php') // if you use that template
+    || ( function_exists('pll_current_language')               // if PLL maps EN shop page
+         && pll_current_language() === 'en'
+         && function_exists('pll_get_post')
+         && is_page( pll_get_post( wc_get_page_id('shop'), 'en' ) ) );
+
+  if ( $is_shopish || $is_treatments ) {
     wp_enqueue_style(
       'shop-tweaks',
       get_stylesheet_directory_uri() . '/css/shop.css',
       [],
       '1.0'
     );
-    
   }
-});
+}, 20);
+
 
 add_action('wp_enqueue_scripts', function () {
   if ( is_product() ) {
@@ -83,6 +97,35 @@ add_action('wp_enqueue_scripts', function () {
   }
 });
 
+add_action('template_redirect', function () {
+  if ( ! function_exists('pll_current_language') ) return;
+
+  // Only handle English
+  if ( pll_current_language() !== 'en' ) return;
+
+  // If someone lands on the shop archive while in EN, send them to the EN page.
+  if ( function_exists('is_shop') && is_shop() ) {
+    // Try to find the EN translation of the assigned Shop page
+    $shop_id = wc_get_page_id('shop');
+    $en_shop_id = function_exists('pll_get_post') ? pll_get_post($shop_id, 'en') : 0;
+
+    // Prefer the translated page permalink if it exists; otherwise fall back to /en/treatments/
+    $target = $en_shop_id ? get_permalink($en_shop_id) : home_url('/en/treatments/');
+
+    // Avoid loop if we're already on that page
+    if ( ! is_page($en_shop_id) ) {
+      wp_redirect($target, 301);
+      exit;
+    }
+  }
+
+  // Extra safety: direct path hit to /en/behandlinger-shop/ → /en/treatments/
+  $req = trim( parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/' );
+  if ( $req === 'en/behandlinger-shop' ) {
+    wp_redirect( home_url('/en/treatments/'), 301 );
+    exit;
+  }
+});
 // Menu
 
 function permanent_makeup_register_menus() {

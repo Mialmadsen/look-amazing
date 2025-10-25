@@ -6,6 +6,15 @@ body.tax-product_cat {
   --btn-bg: var(--color-dark-grey);
   --btn-fg: var(--color-light-text);
 }
+.cards_layout_page  {
+ margin-top: 50px;
+}
+.page-description p{
+    font-family: var(--font-heading);
+    color: var(--color-dark-text);
+    line-height: 1.7;
+    font-size: var(--text-h3);
+}
 
 /* Container + title spacing (align with your .front-page-section) */
 .woocommerce .woocommerce-products-header,
@@ -19,10 +28,11 @@ body.tax-product_cat {
   font-size: var(--text-h2);
   color: var(--color-dark-grey);
   margin-bottom: 2rem;
+
 }
 
 /* Product grid gaps similar to your .cards_layout_page */
-.woocommerce ul.products {
+.woocommerce ul.products,  {
   gap: 40px !important;           /* modern themes respect gap */
   margin-top: 2rem;
 }
@@ -79,11 +89,10 @@ body.tax-product_cat {
 
 /* Woo default button → your button style */
 .woocommerce ul.products li.product a.button,
-.woocommerce ul.products li.product .added_to_cart {
+.woocommerce ul.products li.product .added_to_cart  {
   display: inline-block;
   margin: 0 24px;
   padding: 8px 14px;
-
   text-decoration: none;
   font-family: var(--font-body);
   font-size: var(--text-body);
@@ -131,6 +140,41 @@ body.tax-product_cat {
   color: var(--color-light-text);
   border-color: var(--color-dark-grey);
 }
+
+/* Controls wrapper to prevent layout shifts */
+.woocommerce-products-header {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Sorting controls layout */
+.woocommerce .woocommerce-ordering,
+.woocommerce .woocommerce-result-count {
+  display: inline-block !important;
+  visibility: visible !important;
+  margin: 0 0 1rem !important; /* override WooCommerce margins */
+}
+
+.woocommerce .woocommerce-ordering {
+  float: right;
+}
+
+.woocommerce .woocommerce-ordering select {
+  font-family: var(--font-body);
+  color: var(--color-dark-text);
+  border-radius: 0;
+  border: 1px solid var(--color-dark-grey);
+  padding: 6px 10px;
+  min-width: 200px;
+}
+
+/* Clear floats to prevent layout issues */
+.woocommerce-products-header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 
 /* Small screens */
 @media (max-width: 640px) {

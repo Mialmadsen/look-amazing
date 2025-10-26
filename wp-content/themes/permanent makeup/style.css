@@ -312,7 +312,7 @@ body{
   font-family: var(--font-body);
   width: 100%;
   max-width: 355px;
-  min-height: 500px;
+  min-height: 580px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }

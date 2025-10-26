@@ -77,7 +77,7 @@ add_action('wp_enqueue_scripts', function () {
          && is_page( pll_get_post( wc_get_page_id('shop'), 'en' ) ) );
 
   // Cart/Checkout/My Account screens
-  $is_cartish = is_cart() || is_checkout() || is_account_page() || is_page(['cart']) || is_page_template('woocommerce/woo-shell.php');
+  $is_cartish = is_cart() || is_checkout() || is_account_page() || is_page(['cart']) ||is_order_received_page()|| is_page_template('woocommerce/woo-shell.php');
 
   if ( $is_shopish || $is_treatments || $is_cartish ) {
     wp_enqueue_style(

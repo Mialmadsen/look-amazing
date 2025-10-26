@@ -119,5 +119,3 @@ if ( have_posts() ) :
 endif; // end page loop
 
 get_footer();
-
-// No undefined variables in active code.

@@ -203,46 +203,95 @@ add_action('wp_enqueue_scripts', function () {
     );
   }
 });
-
-// Header user badge (login link vs. "Hi, Name")
+// Header user badge (login link vs. "Hi, Name") with Woo + WP routing
 function theme_user_badge() {
-    $current_url = home_url( $_SERVER['REQUEST_URI'] ?? '/' );
+    $current_url   = home_url( $_SERVER['REQUEST_URI'] ?? '/' );
+    $has_wc        = function_exists('wc_get_page_permalink');
+    $my_account_url= $has_wc ? wc_get_page_permalink('myaccount') : wp_login_url($current_url);
 
-    if ( is_user_logged_in() ) {
-    $u = wp_get_current_user();
-    $name = $u->display_name ?: $u->user_login;
+    // Tiny i18n helper (works with/without Polylang)
+    $t = function($da, $en){
+        if ( function_exists('pll_current_language') && pll_current_language('slug') === 'da' ) return $da;
+        return $en;
+    };
+
+    if ( ! is_user_logged_in() ) {
+        // Logged OUT → take them to Woo My Account (login form)
+        $login_url = $my_account_url;
+        // Optional: preserve return URL after login (WP core param)
+        if ( ! $has_wc ) { // wp-login.php accepts redirect_to
+            $login_url = wp_login_url( $current_url );
+        }
+        ?>
+        <a class="login-link" href="<?php echo esc_url( $login_url ); ?>"
+           aria-label="<?php echo esc_attr( $t('Log ind', 'Log in') ); ?>">
+            <i class="fa-solid fa-user"></i>
+        </a>
+        <?php
+        return;
+    }
+
+    // Logged IN
+    $u       = wp_get_current_user();
+    $name    = $u->display_name ?: $u->user_login;
     $initial = strtoupper( mb_substr( $name, 0, 1 ) );
-    $profile_url = get_edit_user_link( $u->ID );
-    $current_url = home_url( $_SERVER['REQUEST_URI'] ?? '/' );
+
+    // Decide where the main name/avatar link goes:
+    // - If the user can edit posts (editor/admin/shop_manager), send to WP Dashboard
+    // - Otherwise send to Woo My Account
+    $is_power_user = current_user_can('edit_posts'); // covers editors/admins/shop managers
+    $primary_url   = $is_power_user ? admin_url() : $my_account_url;
+
+    // Woo endpoints (only shown for customers/subscribers)
+    $orders_url   = $has_wc ? wc_get_endpoint_url( 'orders',        '', $my_account_url ) : '';
+    $details_url  = $has_wc ? wc_get_endpoint_url( 'edit-account',  '', $my_account_url ) : '';
+    $address_url  = $has_wc ? wc_get_endpoint_url( 'edit-address',  '', $my_account_url ) : '';
+
+    $logout_url = wp_logout_url( home_url('/') );
     ?>
     <div class="user-badge">
-      <a class="user-badge__link" href="<?php echo esc_url( $profile_url ); ?>">
+      <a class="user-badge__link" href="<?php echo esc_url( $primary_url ); ?>">
         <span class="user-badge__avatar" aria-hidden="true"><?php echo esc_html( $initial ); ?></span>
-        <span class="user-badge__hi"><?php echo esc_html__('Hi, ', 'your-txt') . esc_html( $name ); ?></span>
+        <span class="user-badge__hi">
+          <?php echo esc_html( $t('Hej, ', 'Hi, ') . $name ); ?>
+        </span>
       </a>
 
       <!-- CSS-only dropdown -->
       <details class="user-badge__dropdown">
-        <summary class="user-badge__toggle" aria-label="Open user menu">
+        <summary class="user-badge__toggle" aria-label="<?php echo esc_attr( $t('Åbn menu', 'Open menu') ); ?>">
           <i class="fa-solid fa-chevron-down"></i>
         </summary>
+
         <div class="user-badge__menu">
-          <a class="user-badge__menu-item" href="<?php echo esc_url( wp_logout_url( $current_url ) ); ?>">
-            <?php esc_html_e('Log out','your-txt'); ?>
+          <?php if ( $is_power_user ) : ?>
+            <a class="user-badge__menu-item" href="<?php echo esc_url( admin_url() ); ?>">
+              <?php echo esc_html( $t('Dashboard', 'Dashboard') ); ?>
+            </a>
+          <?php endif; ?>
+
+          <?php if ( $has_wc && ! $is_power_user ) : ?>
+            <a class="user-badge__menu-item" href="<?php echo esc_url( $my_account_url ); ?>">
+              <?php echo esc_html( $t('Min konto', 'My account') ); ?>
+            </a>
+            <a class="user-badge__menu-item" href="<?php echo esc_url( $orders_url ); ?>">
+              <?php echo esc_html( $t('Ordrer', 'Orders') ); ?>
+            </a>
+            <a class="user-badge__menu-item" href="<?php echo esc_url( $details_url ); ?>">
+              <?php echo esc_html( $t('Kontooplysninger', 'Account details') ); ?>
+            </a>
+            <a class="user-badge__menu-item" href="<?php echo esc_url( $address_url ); ?>">
+              <?php echo esc_html( $t('Adresser', 'Addresses') ); ?>
+            </a>
+          <?php endif; ?>
+
+          <a class="user-badge__menu-item" href="<?php echo esc_url( $logout_url ); ?>">
+            <?php echo esc_html( $t('Log ud', 'Log out') ); ?>
           </a>
         </div>
       </details>
     </div>
     <?php
-
-    } else {
-        ?>
-        <a class="login-link" href="<?php echo esc_url( wp_login_url( $current_url ) ); ?>" aria-label="<?php esc_attr_e('Log in','your-txt'); ?>">
-            
-            <i class="fa-solid fa-user"></i>
-        </a>
-        <?php
-    }
 }
 
 // 4. Polylang strings

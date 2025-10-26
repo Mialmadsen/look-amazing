@@ -294,6 +294,23 @@ function theme_user_badge() {
     <?php
 }
 
+/**
+ * Add "Check how to create a strong password" link under the Register form.
+ 
+ */
+add_action('woocommerce_register_form', function () {
+    // 1) Put your PDF URL here (or upload to Media and paste the URL)
+    $pdf_url = 'http://permanent-makeup.local/wp-content/uploads/2025/10/How-to-create-a-strong-password-infographic.pdf';
+    // Or override via filter if you prefer:
+    $pdf_url = apply_filters('theme_password_policy_pdf_url', $pdf_url);
+
+    // 2) Output link
+    echo '<p class="woocommerce-LostPassword lost_password" style="margin-top:10px;margin-bottom:10px;">';
+    
+    echo '<a href="' . esc_url($pdf_url) . '" target="_blank" rel="noopener">';
+    echo esc_html( function_exists('pll__') ? pll__('Check how to create a strong password') : __('Check how to create a strong password', 'your-txt') );
+    echo '</a></p>';
+});
 // 4. Polylang strings
 
 function pm_register_strings() {
@@ -340,6 +357,7 @@ function pm_register_strings() {
         'Navn',
         'Tak for din anmeldelse!',
         'Din anmeldelse afventer godkendelse. Vi publicerer den, når en administrator har godkendt den.',
+        'Check how to create a strong password',
     ];
 
     foreach ($strings as $s) {

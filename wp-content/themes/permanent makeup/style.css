@@ -43,23 +43,7 @@ version: 1.0
     /* Grid settings  */
       --grid-gap: 10px;
       --padding-default:12px;
-
-  /* Button variables (map to palette; override later if needed) */
-  --button-bg: var(--color-dark-grey);
-  --button-color: var(--color-light-text);
-  --button-bg-hover: var(--color-light-text);
-  --button-color-hover: var(--color-dark-text);
-  --button-border: rgba(255,255,255,0.06);
-  --button-focus: var(--color-accent-text);
-
-  /* Backwards-compatible aliases used in shop.css */
-  --btn-bg: var(--button-bg);
-  --btn-fg: var(--button-color);
-  --btn-bg-hover: var(--button-bg-hover);
-  --btn-fg-hover: var(--button-color-hover);
-  --btn-border: var(--button-border);
-  --btn-focus: var(--button-focus);
-
+  
   }
    /* Reset CSS */
   

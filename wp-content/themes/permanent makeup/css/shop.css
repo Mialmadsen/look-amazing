@@ -1,11 +1,5 @@
 /* Scope to Woo list pages only */
-body.post-type-archive-product,
-body.tax-product_cat {
-  --card-bg: var(--color-beige);
-  --card-fg: var(--color-dark-grey);
-  --btn-bg: var(--color-dark-grey);
-  --btn-fg: var(--color-light-text);
-}
+
 .cards_layout_page  {
  margin-top: 50px;
 }
@@ -97,8 +91,8 @@ body.tax-product_cat {
   font-family: var(--font-body);
   font-size: var(--text-body);
   line-height: 1.2;
-  background: var(--btn-bg);
-  color: var(--btn-fg);
+  background: var(--color-dark-grey);
+  color: var(--color-light-text);
   border-radius: 0; /* fixed from 'none' to explicit 0 */
   transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease;
   white-space: nowrap;
@@ -174,15 +168,107 @@ body.tax-product_cat {
   display: table;
   clear: both;
 }
+/* =========================
+   CART (WooCommerce)
+   ========================= */
+.wc-block-cart .wc-block-cart__submit-container {
+    background: var(--color-light-text);
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-h4);
+    color: var(--color-light-text);
+}
+.wc-block-cart .wc-block-cart__submit-container a {
+    
+}
+
+/* =========================
+   CART (WooCommerce) — theme-matching CTA
+   ========================= */
+.wc-block-cart .wc-block-cart__submit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: transparent;            /* keep panel neutral */
+  padding: 18px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Primary CTA inside the block-cart (works for default block markup) */
+.wc-block-cart .wc-block-cart__submit-container a,
+.wc-block-cart .wc-block-cart__submit-container .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  text-decoration: none;
+  background: var(--color-dark-grey);
+  color: var(--color-light-text);
+  border: 1px solid transparent;
+  border-radius: 0;                 /* no rounded corners */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: background .15s ease, color .15s ease, transform .12s ease;
+  white-space: nowrap;
+}
+
+/* Hover / focus */
+.wc-block-cart .wc-block-cart__submit-container a:hover,
+.wc-block-cart .wc-block-cart__submit-container .wp-block-button__link:hover,
+.wc-block-cart .wc-block-cart__submit-container a:focus,
+.wc-block-cart .wc-block-cart__submit-container .wp-block-button__link:focus {
+  background: var(--color-light-text);
+  color: var(--color-dark-text);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Ensure link inside looks like button even if it's just a text link */
+.wc-block-cart .wc-block-cart__submit-container a:hover,
+.wc-block-cart .wc-block-cart__submit-container a:active {
+  text-decoration: none;
+}
+
+/* Classic Woo proceed-to-checkout button (non-block cart compatibility) */
+.woocommerce .wc-proceed-to-checkout a.button,
+.woocommerce .wc-proceed-to-checkout .checkout-button,
+.woocommerce .cart_totals a.checkout-button {
+  background: var(--color-dark-grey) !important;
+  color: var(--color-light-text) !important;
+  border-radius: 0 !important;
+  padding: 10px 24px !important;
+  text-decoration: none !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08) !important;
+}
+
+/* Classic hover */
+.woocommerce .wc-proceed-to-checkout a.button:hover,
+.woocommerce .wc-proceed-to-checkout .checkout-button:hover,
+.woocommerce .cart_totals a.checkout-button:hover {
+  background: var(--color-light-text) !important;
+  color: var(--color-dark-text) !important;
+  transform: translateY(-1px);
+}
 
 
-/* Small screens */
+
+
+/* Small screens: make CTA full width inside cart block */
 @media (max-width: 640px) {
-  .woocommerce ul.products li.product .woocommerce-loop-product__title {
-    font-size: calc(var(--text-h4) * 0.9);
-  }
-  .woocommerce ul.products li.product a img {
-    height: 210px;
+  .wc-block-cart .wc-block-cart__submit-container a,
+  .wc-block-cart .wc-block-cart__submit-container .wp-block-button__link,
+  .woocommerce .wc-proceed-to-checkout a.button {
+    width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
+
+/* ...existing code... */
 

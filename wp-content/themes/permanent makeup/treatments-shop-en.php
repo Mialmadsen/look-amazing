@@ -16,7 +16,7 @@ get_header(); ?>
        
     <div class="page-description" style="margin-bottom: 50px;"><p>Explore our online shop</p></div>
 
-    <div class="page-content cards_layout_page fade-stagger space">
+    <div class="page-content">
       <?php the_content(); // <-- runs your Shortcode block ?>
      
 

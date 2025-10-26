@@ -62,25 +62,29 @@ function permanent_makeup_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'permanent_makeup_enqueue_styles' );
 // Load custom styles (and optional animations) only on Shop + product categories
+
 add_action('wp_enqueue_scripts', function () {
-  // Native Woo contexts
+  // Woo archives (shop + categories/tags)
   $is_shopish = is_shop() || is_product_taxonomy();
 
   // Your English page that acts like the shop
   $is_treatments =
-       is_page('treatments')                                   // match by slug
-    || is_page_template('page-templates/treatments-shop-en.php') // if you use that template
-    || ( function_exists('pll_current_language')               // if PLL maps EN shop page
+       is_page('treatments')
+    || is_page_template('treatments-shop-en.php')
+    || ( function_exists('pll_current_language')
          && pll_current_language() === 'en'
          && function_exists('pll_get_post')
          && is_page( pll_get_post( wc_get_page_id('shop'), 'en' ) ) );
 
-  if ( $is_shopish || $is_treatments ) {
+  // Cart/Checkout/My Account screens
+  $is_cartish = is_cart() || is_checkout() || is_account_page() || is_page(['cart']) || is_page_template('woocommerce/woo-shell.php');
+
+  if ( $is_shopish || $is_treatments || $is_cartish ) {
     wp_enqueue_style(
       'shop-tweaks',
       get_stylesheet_directory_uri() . '/css/shop.css',
       [],
-      '1.0'
+      '1.2' // bumped version to ensure cache refresh
     );
   }
 }, 20);
@@ -126,6 +130,20 @@ add_action('template_redirect', function () {
     exit;
   }
 });
+
+// / Map Woo core pages to the current Polylang language 
+function pll_wc_translate_page_id( $page_id ) {
+  if ( function_exists('pll_get_post') && $page_id ) {
+    $tr = pll_get_post( $page_id );
+    if ( $tr ) return $tr;
+  }
+  return $page_id;
+}
+add_filter('woocommerce_get_cart_page_id',      'pll_wc_translate_page_id');
+add_filter('woocommerce_get_checkout_page_id',  'pll_wc_translate_page_id');
+add_filter('woocommerce_get_myaccount_page_id', 'pll_wc_translate_page_id');
+add_filter('woocommerce_get_shop_page_id',      'pll_wc_translate_page_id');
+
 // Menu
 
 function permanent_makeup_register_menus() {

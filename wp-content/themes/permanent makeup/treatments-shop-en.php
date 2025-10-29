@@ -10,19 +10,21 @@ get_header(); ?>
 <div class="mat"></div>
 
 <main class="container front-page-section">
-  <?php
+    <?php
   while ( have_posts() ) : the_post(); ?>
 
-       
-    <div class="page-description" style="margin-bottom: 50px;"><p>Explore our online shop</p></div>
+
+    <div class="page-description" style="margin-bottom: 50px;">
+        <p>Explore our online shop</p>
+    </div>
 
     <div class="page-content">
-      <?php the_content(); // <-- runs your Shortcode block ?>
-     
+        <?php the_content(); // <-- runs your Shortcode block ?>
 
-      
-    </div> 
-    
+
+
+    </div>
+
 
     <?php
     // Fallback: if no [products] shortcode is present, render it anyway
@@ -34,7 +36,7 @@ get_header(); ?>
     }
     ?>
 
-  <?php endwhile; ?>
+    <?php endwhile; ?>
 </main>
 
 <?php get_footer();

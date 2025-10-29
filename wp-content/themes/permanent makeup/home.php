@@ -22,9 +22,9 @@ get_template_part('template-parts/components/hero', null, [
 
 <section class="front-page-section" role="banner">
 
-<div class="cards_layout_page fade-stagger">
-           <?php if(have_posts()): ?>
-            <?php
+    <div class="cards_layout_page fade-stagger">
+        <?php if(have_posts()): ?>
+        <?php
                     while (have_posts()) : the_post();
                         $image      = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
                         $heading    = get_the_title();
@@ -53,9 +53,9 @@ get_template_part('template-parts/components/hero', null, [
 
 
 
-        
-  
-</div>
+
+
+    </div>
 
 
 
@@ -63,4 +63,3 @@ get_template_part('template-parts/components/hero', null, [
 <?php get_template_part("template-parts/index", "survey") ?>
 <div class="space"></div>
 <?php get_footer(); ?>
-

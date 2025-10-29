@@ -36,30 +36,30 @@ get_template_part('template-parts/components/hero', null, [
 ?>
 
 <section class="front-page-section sustainability" role="contentinfo">
-  <div class="sust-container">
-    <h2><?php echo esc_html($title_1); ?></h2>
-    <div class="prose">
-      <?php echo wpautop( wp_kses_post($text_1) ); ?>
-    </div>
+    <div class="sust-container">
+        <h2><?php echo esc_html($title_1); ?></h2>
+        <div class="prose">
+            <?php echo wpautop( wp_kses_post($text_1) ); ?>
+        </div>
 
-    
 
-    
+
+
 </section>
 <?php get_template_part('template-parts/index', 'flyer'); ?>
 
 <section class="front-page-section sustainability" role="contentinfo">
-  
-    
-<h2><?php echo esc_html($title_2); ?></h2>
+
+
+    <h2><?php echo esc_html($title_2); ?></h2>
     <div class="prose">
-      <?php echo wpautop( wp_kses_post($text_2) ); ?>
+        <?php echo wpautop( wp_kses_post($text_2) ); ?>
     </div>
-  </div>
+    </div>
 </section>
 
 <section class="front-page-section" role="contentinfo">
-  <?php get_template_part('template-parts/blog-story', null, [
+    <?php get_template_part('template-parts/blog-story', null, [
   'query_args' => [
     'p' => 223,   // your post ID
     'post_type' => 'post',
@@ -72,7 +72,9 @@ get_template_part('template-parts/components/hero', null, [
 </section>
 
 <div class="video-container">
-  <iframe width="560" height="315" src="<?php echo esc_url($video) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="<?php echo esc_url($video) ?>" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 

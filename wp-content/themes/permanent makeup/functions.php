@@ -223,11 +223,11 @@ function theme_user_badge() {
             $login_url = wp_login_url( $current_url );
         }
         ?>
-        <a class="login-link" href="<?php echo esc_url( $login_url ); ?>"
-           aria-label="<?php echo esc_attr( $t('Log ind', 'Log in') ); ?>">
-            <i class="fa-solid fa-user"></i>
-        </a>
-        <?php
+<a class="login-link" href="<?php echo esc_url( $login_url ); ?>"
+    aria-label="<?php echo esc_attr( $t('Log ind', 'Log in') ); ?>">
+    <i class="fa-solid fa-user"></i>
+</a>
+<?php
         return;
     }
 
@@ -249,49 +249,49 @@ function theme_user_badge() {
 
     $logout_url = wp_logout_url( home_url('/') );
     ?>
-    <div class="user-badge">
-      <a class="user-badge__link" href="<?php echo esc_url( $primary_url ); ?>">
+<div class="user-badge">
+    <a class="user-badge__link" href="<?php echo esc_url( $primary_url ); ?>">
         <span class="user-badge__avatar" aria-hidden="true"><?php echo esc_html( $initial ); ?></span>
         <span class="user-badge__hi">
-          <?php echo esc_html( $t('Hej, ', 'Hi, ') . $name ); ?>
+            <?php echo esc_html( $t('Hej, ', 'Hi, ') . $name ); ?>
         </span>
-      </a>
+    </a>
 
-      <!-- CSS-only dropdown -->
-      <details class="user-badge__dropdown">
+    <!-- CSS-only dropdown -->
+    <details class="user-badge__dropdown">
         <summary class="user-badge__toggle" aria-label="<?php echo esc_attr( $t('Åbn menu', 'Open menu') ); ?>">
-          <i class="fa-solid fa-chevron-down"></i>
+            <i class="fa-solid fa-chevron-down"></i>
         </summary>
 
         <div class="user-badge__menu">
-          <?php if ( $is_power_user ) : ?>
+            <?php if ( $is_power_user ) : ?>
             <a class="user-badge__menu-item" href="<?php echo esc_url( admin_url() ); ?>">
-              <?php echo esc_html( $t('Dashboard', 'Dashboard') ); ?>
+                <?php echo esc_html( $t('Dashboard', 'Dashboard') ); ?>
             </a>
-          <?php endif; ?>
+            <?php endif; ?>
 
-          <?php if ( $has_wc && ! $is_power_user ) : ?>
+            <?php if ( $has_wc && ! $is_power_user ) : ?>
             <a class="user-badge__menu-item" href="<?php echo esc_url( $my_account_url ); ?>">
-              <?php echo esc_html( $t('Min konto', 'My account') ); ?>
+                <?php echo esc_html( $t('Min konto', 'My account') ); ?>
             </a>
             <a class="user-badge__menu-item" href="<?php echo esc_url( $orders_url ); ?>">
-              <?php echo esc_html( $t('Ordrer', 'Orders') ); ?>
+                <?php echo esc_html( $t('Ordrer', 'Orders') ); ?>
             </a>
             <a class="user-badge__menu-item" href="<?php echo esc_url( $details_url ); ?>">
-              <?php echo esc_html( $t('Kontooplysninger', 'Account details') ); ?>
+                <?php echo esc_html( $t('Kontooplysninger', 'Account details') ); ?>
             </a>
             <a class="user-badge__menu-item" href="<?php echo esc_url( $address_url ); ?>">
-              <?php echo esc_html( $t('Adresser', 'Addresses') ); ?>
+                <?php echo esc_html( $t('Adresser', 'Addresses') ); ?>
             </a>
-          <?php endif; ?>
+            <?php endif; ?>
 
-          <a class="user-badge__menu-item" href="<?php echo esc_url( $logout_url ); ?>">
-            <?php echo esc_html( $t('Log ud', 'Log out') ); ?>
-          </a>
+            <a class="user-badge__menu-item" href="<?php echo esc_url( $logout_url ); ?>">
+                <?php echo esc_html( $t('Log ud', 'Log out') ); ?>
+            </a>
         </div>
-      </details>
-    </div>
-    <?php
+    </details>
+</div>
+<?php
 }
 
 /**

@@ -6,9 +6,9 @@ defined('ABSPATH') || exit;
 get_header('shop'); ?>
 <div class='mat'></div>
 <main class="container front-page-section">
-    
 
-  <?php
+
+    <?php
   // Optional: show the page title pulled from the assigned Shop page
   if ( apply_filters('woocommerce_show_page_title', true) ) {
     echo '<a class="section_heading" href="' . esc_url( get_permalink( wc_get_page_id('shop') ) ) . '">';

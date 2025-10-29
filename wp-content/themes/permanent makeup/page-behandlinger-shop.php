@@ -18,14 +18,14 @@ get_header();
 
 if ( have_posts() ) :
   while ( have_posts() ) : the_post(); ?>
-  <div class="mat"></div>
-  
-    <main class="container front-page-section">
+<div class="mat"></div>
 
-      
+<main class="container front-page-section">
 
-      <!-- Products grid -->
-      <div class="cards_layout_page fade-stagger space">
+
+
+    <!-- Products grid -->
+    <div class="cards_layout_page fade-stagger space">
         <?php
         // Current page for pagination (supports /page/2 on a static page)
         $paged = max( 1, get_query_var('paged') ?: get_query_var('page') );
@@ -50,14 +50,14 @@ if ( have_posts() ) :
 
             $excerpt = get_the_excerpt();
             ?>
-            <div class="article-card card">
-              <a class="card-image-wrapper" href="<?php the_permalink(); ?>">
+        <div class="article-card card">
+            <a class="card-image-wrapper" href="<?php the_permalink(); ?>">
                 <img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
-              </a>
+            </a>
 
-              <div class="card-text">
+            <div class="card-text">
                 <a href="<?php the_permalink(); ?>" class="no-underline" style="text-decoration:none;color:inherit">
-                  <h3><?php the_title(); ?></h3>
+                    <h3><?php the_title(); ?></h3>
                 </a>
 
                 <?php
@@ -74,9 +74,9 @@ if ( have_posts() ) :
                 <p><?php echo esc_html( wp_strip_all_tags( wp_trim_words( $excerpt, 40 ) ) ); ?></p>
 
                 <div class="card-meta">
-                  <span class="price"><?php echo $_product ? $_product->get_price_html() : ''; ?></span>
-                  <span class="cart-cta">
-                    <?php
+                    <span class="price"><?php echo $_product ? $_product->get_price_html() : ''; ?></span>
+                    <span class="cart-cta">
+                        <?php
                       // Woo's add-to-cart template expects $product global.
                       global $product;
                       $product = $_product;
@@ -84,13 +84,13 @@ if ( have_posts() ) :
                         woocommerce_template_loop_add_to_cart();
                       }
                     ?>
-                  </span>
+                    </span>
                 </div>
-              </div>
             </div>
-          <?php endwhile; ?>
+        </div>
+        <?php endwhile; ?>
 
-          <div class="space" style="width:100%;">
+        <div class="space" style="width:100%;">
             <?php
             echo paginate_links( [
               'total'     => $q->max_num_pages,
@@ -100,9 +100,9 @@ if ( have_posts() ) :
               'next_text' => __( 'Next »', 'woocommerce' ),
             ] );
             ?>
-          </div>
+        </div>
 
-          <?php
+        <?php
           // Clean up
           wp_reset_postdata();
           if ( function_exists( 'wc_setup_product_data' ) ) {
@@ -111,11 +111,11 @@ if ( have_posts() ) :
           ?>
 
         <?php else : ?>
-          <p><?php echo esc_html__( 'Ingen produkter fundet.', 'woocommerce' ); ?></p>
+        <p><?php echo esc_html__( 'Ingen produkter fundet.', 'woocommerce' ); ?></p>
         <?php endif; // end products loop ?>
-      </div>
-    </main>
-  <?php endwhile;
+    </div>
+</main>
+<?php endwhile;
 endif; // end page loop
 
 get_footer();

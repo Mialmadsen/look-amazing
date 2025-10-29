@@ -1,5 +1,5 @@
 <section class="front-page-section" id="gallery" role="banner">
-  <?php
+    <?php
   // Assume the page and gallery exist (no extra checks)
   $gallery_page      = get_page_by_path('galleri-2');
   $gallery_page_url  = get_permalink($gallery_page);
@@ -26,21 +26,21 @@
   $ids = array_slice(array_filter($ids), 0, 3);
   ?>
 
-  <a class="section_heading" href="<?php echo esc_url($gallery_page_url); ?>">
-    <h2><?php pll_e("Galleri") ?> <i class="fa-solid fa-trophy"></i></h2>
-    
-  </a>
+    <a class="section_heading" href="<?php echo esc_url($gallery_page_url); ?>">
+        <h2><?php pll_e("Galleri") ?> <i class="fa-solid fa-trophy"></i></h2>
 
-  <div class="gallery-grid fade-stagger">
-    <?php foreach ($ids as $id): ?>
-      <div class="gallery-item card">
-        <a href="<?php echo esc_url($gallery_page_url); ?>">
-          <?php echo wp_get_attachment_image($id, 'large', false, [
+    </a>
+
+    <div class="gallery-grid fade-stagger">
+        <?php foreach ($ids as $id): ?>
+        <div class="gallery-item card">
+            <a href="<?php echo esc_url($gallery_page_url); ?>">
+                <?php echo wp_get_attachment_image($id, 'large', false, [
             'class'   => 'gallery-preview-img',
             'loading' => 'lazy',
           ]); ?>
-        </a>
-      </div>
-    <?php endforeach; ?>
-  </div>
+            </a>
+        </div>
+        <?php endforeach; ?>
+    </div>
 </section>

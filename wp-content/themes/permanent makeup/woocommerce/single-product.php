@@ -8,7 +8,7 @@ get_header(); // ← your normal header (not get_header('shop'))
 <div class="mat"></div>
 
 <main class="container front-page-section">
-  <?php
+    <?php
   if ( have_posts() ) :
     while ( have_posts() ) :
       the_post();

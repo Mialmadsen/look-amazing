@@ -10,9 +10,9 @@ get_header(); ?>
 <?php if(have_posts()): ?>
 <?php while(have_posts()): the_post() ?>
 <div class="gallery-grid_page fade-stagger">
-    
+
     <?php the_content(); // Gutenberg content (Gallery block) ?>
-        
+
 </div>
 
 

@@ -1,16 +1,16 @@
 <div id="comments" class="comments-area">
 
-  <?php if ( have_comments() ) : ?>
+    <?php if ( have_comments() ) : ?>
     <h2 class="comments-title"><?php _e('Kommentarer', 'permanent-makeup'); ?></h2>
 
     <ul class="commentlist">
-      <?php wp_list_comments(); ?>
+        <?php wp_list_comments(); ?>
     </ul>
 
     <?php the_comments_navigation(); ?>
-  <?php endif; ?>
+    <?php endif; ?>
 
-  <?php
+    <?php
   if ( comments_open() ) {
     comment_form([
       'title_reply'       => __('Skriv en kommentar', 'permanent-makeup'),

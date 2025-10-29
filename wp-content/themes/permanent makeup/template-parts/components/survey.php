@@ -20,21 +20,21 @@ $link_text = $args['link_text'] ?? '';
 ?>
 
 <section class="survey" role="banner">
-  <div class="survey-content">
-    <div class="survey-cta">
-      <div class="clip-icon">
-        <i class="<?php echo esc_attr($icon . ' ' . $icon_extra); ?>" style="color: #E1D8C6;"></i>
-      </div>
-      <div class="text">
-        <?php if ($title): ?><h2><?php echo esc_html($title); ?></h2><?php endif; ?>
-        <?php if ($text): ?><p><?php echo esc_html($text); ?></p><?php endif; ?>
+    <div class="survey-content">
+        <div class="survey-cta">
+            <div class="clip-icon">
+                <i class="<?php echo esc_attr($icon . ' ' . $icon_extra); ?>" style="color: #E1D8C6;"></i>
+            </div>
+            <div class="text">
+                <?php if ($title): ?><h2><?php echo esc_html($title); ?></h2><?php endif; ?>
+                <?php if ($text): ?><p><?php echo esc_html($text); ?></p><?php endif; ?>
+            </div>
         </div>
-    </div>
 
-    <?php if ($link && $link_text): ?>
-      <a href="<?php echo esc_url($link); ?>" class="button-container">
-        <?php echo esc_html($link_text); ?> <span class="arrow">→</span>
-      </a>
-    <?php endif; ?>
-  </div>
+        <?php if ($link && $link_text): ?>
+        <a href="<?php echo esc_url($link); ?>" class="button-container">
+            <?php echo esc_html($link_text); ?> <span class="arrow">→</span>
+        </a>
+        <?php endif; ?>
+    </div>
 </section>
